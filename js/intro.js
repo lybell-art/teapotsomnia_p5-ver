@@ -11,7 +11,7 @@ let Showcase_Button=function(d)
 {
 	let teapot=null;
 	let rot=0.0;
-	let isMouseOn=function()
+	let _isMouseOn=function()
 	{
 		return (between(mouseX,0,d.width) && between(mouseY,0,d.height));
 	}
@@ -27,7 +27,7 @@ let Showcase_Button=function(d)
 	};
 	d.draw=function()
 	{
-		let isMouseOn=isMouseOn();
+		let isMouseOn=_isMouseOn();
 		d.clear();
 		d.lights();
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
