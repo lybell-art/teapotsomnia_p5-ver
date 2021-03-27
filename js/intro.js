@@ -9,10 +9,15 @@ function between(input, a, b)
 
 let Showcase_Button=function(d)
 {
-	d.teapot=null;
-	d.rot=0.0;
+	let teapot=null;
+	let rot=0.0;
+	let isMouseOn=function()
+	{
+		return (between(mouseX,0,d.width) && between(mouseY,0,d.height));
+	}
+	
 	d.preload=function() {
-		d.teapot = loadModel('assets/teapot.obj', true);
+		teapot = loadModel('assets/teapot.obj', true);
 	}
 	d.setup=function()
 	{
@@ -22,24 +27,19 @@ let Showcase_Button=function(d)
 	};
 	d.draw=function()
 	{
-		let isMouseOn=d.isMouseOn();
+		let isMouseOn=isMouseOn();
 		d.clear();
 		d.lights();
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
 		d.rotateX(HALF_PI);
-		d.rotateZ(d.rot);
+		d.rotateZ(rot);
 		d.scale(6 * (isMouseOn?1.2:1));
-		d.shape(d.teapot);
-		d.rot+=0.2;
+		d.shape(teapot);
+		rot+=0.2;
 	};
 	d.windowResized=function()
 	{
 		d.resizeCanvas(vmin(20),vmin(20), false);
-	}
-	
-	d.isMouseOn=function()
-	{
-		return (between(mouseX,0,d.width) && between(mouseY,0,d.height));
 	}
 };
 new p5(Showcase_Button, 'showcase_sketch');
