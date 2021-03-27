@@ -21,7 +21,7 @@ let Showcase_Button=function(d)
 	}
 	d.setup=function()
 	{
-		d.createCanvas(vmin(20), vmin(20), d.WEBGL);
+		d.createCanvas(vmin(30), vmin(20), d.WEBGL);
 		d.noStroke();
 		d.rot=0.0;
 	};
@@ -33,13 +33,13 @@ let Showcase_Button=function(d)
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
 		d.rotateX(d.HALF_PI);
 		d.rotateZ(rot);
-		d.scale(0.6*(isMouseOn?1.2:1));
+		d.scale(0.8*(isMouseOn?1.2:1));
 		d.model(teapot);
 		rot+=0.05;
 	};
 	d.windowResized=function()
 	{
-		d.resizeCanvas(vmin(20),vmin(20), false);
+		d.resizeCanvas(vmin(30),vmin(20), false);
 	}
 };
 new p5(Showcase_Button, 'showcase_sketch');
