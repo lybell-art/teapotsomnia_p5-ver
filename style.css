@@ -1,6 +1,6 @@
 html{
 	height: 100%;
-	background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+	background-image: linear-gradient(to top, #56568F 0%, #a18cd1 100%);
 
 }
 body{
@@ -15,9 +15,33 @@ body{
 }
 
 #title{
-	position:absolute;
+	position: relative;
+	width: 100%;
 	font-size:8vmin;
 	text-align:center;
-	top: 35%;
-	width:100%;
+	padding-bottom: 100px;
+	padding-top: 20px;
 }
+
+.centre{
+	position:absolute;
+	width:100%;
+	top: 50%;
+	transform: translate(0%, -50%);
+}
+
+#showcase_button {
+	width: 20vmin;
+	height: 20vmin;
+	background-color: #24adaf;
+	display: block;
+	text-align: center;
+	position: relative;
+	left: 50%;
+	margin: 0 -10vmin;
+}
+
+
+
+
+
