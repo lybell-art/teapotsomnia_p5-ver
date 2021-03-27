@@ -38,6 +38,7 @@ body{
 	position: relative;
 	left: 50%;
 	margin: 0 -10vmin;
+	margin-bottom:10px;
 }
 
 #logo {
