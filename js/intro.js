@@ -31,7 +31,7 @@ let Showcase_Button=function(d)
 		d.clear();
 		d.lights();
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
-		d.rotateX(HALF_PI);
+		d.rotateX(d.HALF_PI);
 		d.rotateZ(rot);
 		d.scale(6 * (isMouseOn?1.2:1));
 		d.shape(teapot);
