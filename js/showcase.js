@@ -14,11 +14,11 @@ function preload() {
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight); 
-	background(143,132,191);
 	noStroke();
 }
 function draw() 
 {
+	clear();
 	if (mouseIsPressed) 
 	{
 //		var size = map(dist(mouseX,mouseY,pmouseX,pmouseY),0,400,5,80);
