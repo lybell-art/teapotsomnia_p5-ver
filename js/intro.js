@@ -24,7 +24,7 @@ let Showcase_Button=function(d)
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
 		d.rotateX(d.HALF_PI);
 		d.rotateZ(rot);
-		d.scale(d.width/160 * (isMouseOn?1.2:1));
+		d.scale(d.width/350 * (isMouseOn?1.2:1));
 		d.model(teapot);
 		rot+=0.02;
 	};
