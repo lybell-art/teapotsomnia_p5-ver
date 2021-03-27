@@ -1,3 +1,36 @@
-html{
+body{
   background-image: linear-gradient(to top, #56568F 0%, #a18cd1 100%);
+}
+
+
+
+#type1{
+	position: relative;
+	width: 100%;
+	font-size:8vw;
+	text-align:center;
+	padding-bottom: 20px;
+  z-index: 5;
+  cursor:default;
+}
+
+#type_buffer{
+	position: relative;
+	width: 100%;
+	font-size:15vw;
+	text-align:center;
+  z-index: 6;
+  cursor:default;
+}
+
+
+#cam_button{
+	position: fixed;
+	width: 80px;
+  height:80px;
+  right:25px;
+  top:25px;
+  background-color:#00ffff;
+  z-index: 10;
+  cursor:pointer;
 }
