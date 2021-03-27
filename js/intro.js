@@ -35,7 +35,7 @@ let Showcase_Button=function(d)
 		d.rotateZ(rot);
 		d.scale((isMouseOn?1.2:1));
 		d.model(teapot);
-		rot+=0.2;
+		rot+=0.05;
 	};
 	d.windowResized=function()
 	{
