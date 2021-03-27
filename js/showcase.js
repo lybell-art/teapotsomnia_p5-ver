@@ -39,6 +39,7 @@ function draw()
 
 window.addEventListener("keydown", e => {
 	const buffer = document.getElementById("type_buffer");
+	console.log(buffer);
 	if (buffer)
 	{
 		if(e.keyCode == 13) //enter
