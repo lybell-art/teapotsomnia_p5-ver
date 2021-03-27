@@ -1,3 +1,27 @@
 html{
   background-image: linear-gradient(to top, #56568F 0%, #a18cd1 100%);
 }
+
+#showcase_button {
+	width: 30vmin;
+	height: 20vmin;
+	display: block;
+	text-align: center;
+	position: relative;
+	left: 50%;
+	margin: 0 -15vmin;
+	margin-bottom:10px;
+}
+
+#logo {
+	max-width: 150px;
+	width: 15vmin;
+	position: relative;
+	display: inline-block;
+}
+
+#showcase_sketch {
+	position:absolute;
+	width: 100%;
+	height:100%;
+}
