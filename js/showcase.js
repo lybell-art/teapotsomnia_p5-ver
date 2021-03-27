@@ -39,7 +39,6 @@ function draw()
 
 window.addEventListener("keydown", e => {
 	const buffer = document.getElementById("type_buffer");
-	console.log(buffer);
 	if (buffer)
 	{
 		if(e.keyCode == 13) //enter
@@ -54,6 +53,6 @@ window.addEventListener("keydown", e => {
 		{
 			bufferStr+=e.key;
 		}
-		buffer.innerTEXT=bufferStr+"_";
+		buffer.innerText=bufferStr+"_";
 	}
 });
