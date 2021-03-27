@@ -21,7 +21,7 @@ let Showcase_Button=function(d)
 	d.windowResized=function()
 	{
 		console.log("why");
-		d.resizeCanvas(vmin(20),vmin(20));
+		d.resizeCanvas(vmin(20),vmin(20), true);
 	}
 };
-new p5(Showcase_Button, 'showcase_sketch', true);
+new p5(Showcase_Button, 'showcase_sketch');
