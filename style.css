@@ -42,12 +42,16 @@ body{
 	margin: 0 -10vmin;
 }
 
+#logo {
+    max-width: 150px;
+    width: 15vmin;
+    position: relative;
+    display: inline-block;
+}
+
 #showcase_sketch {
 	width: 100%;
 	height:100%;
 }
-
-
-
 
 
