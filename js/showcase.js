@@ -33,3 +33,9 @@ function draw()
 		}
 	}
 }
+
+
+window.addEventListener("keydown", e => {
+  const key = document.getElementById("type_buffer");
+  if (key) key.classList.add('pressed');
+});
