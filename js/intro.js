@@ -21,7 +21,7 @@ let Showcase_Button=function(d)
 	}
 	d.setup=function()
 	{
-		d.createCanvas(vmin(20), vmin(20), WEBGL);
+		d.createCanvas(vmin(20), vmin(20), d.WEBGL);
 		d.noStroke();
 		d.rot=0.0;
 	};
