@@ -17,7 +17,7 @@ let Showcase_Button=function(d)
 	}
 	
 	d.preload=function() {
-		teapot = loadModel('assets/teapot.obj', true);
+		teapot = d.loadModel('assets/teapot.obj', true);
 	}
 	d.setup=function()
 	{
