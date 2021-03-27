@@ -1,5 +1,3 @@
-let myp5 = null;
-
 function vmin(p)
 {
   return Math.min(window.innerWidth,window.innerHeight) * p / 100;
@@ -26,12 +24,4 @@ let Showcase_Button=function(d)
 		d.resizeCanvas(vmin(20),vmin(20));
 	}
 };
-
-$(document).ready(function () {
-    myp5 = new p5(Showcase_Button, 'showcase_sketch');
-    $(window).on('click resize', canvasResize);
-});
-
-var canvasResize = function() {
-	if(myp5) {myp5.resizeCanvas(vmin(20),vmin(20));}
-};
+new p5(Showcase_Button, 'showcase_sketch', true);
