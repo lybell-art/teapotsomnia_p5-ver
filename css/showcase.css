@@ -35,7 +35,7 @@ body{
 
 @media screen and (max-width: 768px) {
 	#type1{
-		font-size:36px;
+		font-size:32px;
 	}
 	#type_buffer{
 		font-size:48px;
