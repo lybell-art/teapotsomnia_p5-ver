@@ -22,7 +22,7 @@ let Showcase_Button=function(d)
 	};
 	d.draw=function()
 	{
-		let isMouseOn=this.mouseOn();
+		let isMouseOn=d.isMouseOn();
 		d.clear();
 		d.lights();
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
