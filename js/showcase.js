@@ -11,6 +11,8 @@ function preload() {
 	ico2 = loadImage("assets/camera_off_ico.png");
 }
 */
+let bufferStr="";
+
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight); 
@@ -36,6 +38,21 @@ function draw()
 
 
 window.addEventListener("keydown", e => {
-  const key = document.getElementById("type_buffer");
-  if (key) key.classList.add('pressed');
+	const buffer = document.getElementById("type_buffer");
+	if (buffer)
+	{
+		if(e.keyCode == 13) //enter
+		{
+			bufferStr="";
+		}
+		else if(e.keyCode == 8) //backspace
+		{
+			bufferStr=bufferStr.slice(0,-1);
+		}
+		else if(e.key.length==1)
+		{
+			bufferStr+=e.key;
+		}
+		buffer.innerTEXT=bufferStr+"_";
+	}
 });
