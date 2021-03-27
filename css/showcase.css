@@ -2,16 +2,14 @@ body{
   background-image: linear-gradient(to top, #56568F 0%, #a18cd1 100%);
 }
 
-
-
 #type1{
 	position: relative;
 	width: 100%;
 	font-size:4vw;
 	text-align:center;
 	padding-bottom: 20px;
-  z-index: 5;
-  cursor:default;
+	z-index: 5;
+	cursor:default;
 }
 
 #type_buffer{
@@ -19,8 +17,8 @@ body{
 	width: 100%;
 	font-size:6vw;
 	text-align:center;
-  z-index: 6;
-  cursor:default;
+	z-index: 6;
+	cursor:default;
 }
 
 
@@ -33,4 +31,13 @@ body{
 	background-color:#00ffff;
 	z-index: 10;
 	cursor:pointer;
+}
+
+@media screen and (max-width: 768px) {
+	#type1{
+		font-size:24px;
+	}
+	#type_buffer{
+		font-size:36px;
+	}
 }
