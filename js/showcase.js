@@ -53,6 +53,6 @@ window.addEventListener("keydown", e => {
 		{
 			bufferStr+=e.key;
 		}
-		buffer.innerText=bufferStr+"_";
+		buffer.textContent=bufferStr+"_";
 	}
 });
