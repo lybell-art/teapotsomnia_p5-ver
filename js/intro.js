@@ -13,7 +13,7 @@ let Showcase_Button=function(d)
 	let rot=0.0;
 	let _isMouseOn=function()
 	{
-		return (between(mouseX,0,d.width) && between(mouseY,0,d.height));
+		return (between(d.mouseX,0,d.width) && between(d.mouseY,0,d.height));
 	}
 	
 	d.preload=function() {
