@@ -1,19 +1,10 @@
-function vmin(p)
-{
-  return Math.min(window.innerWidth,window.innerHeight) * p / 100;
-}
-function between(input, a, b)
-{
-  return a<=input && input<=b;
-}
-
 let Showcase_Button=function(d)
 {
 	let teapot=null;
 	let rot=0.0;
 	let _isMouseOn=function()
 	{
-		return (between(d.mouseX,0,d.width) && between(d.mouseY,0,d.height));
+		return (between(d.mouseX,1,d.width) && between(d.mouseY,1,d.height));
 	}
 	
 	d.preload=function() {
@@ -33,9 +24,9 @@ let Showcase_Button=function(d)
 		d.fill(isMouseOn ? "#FF8C9A" : "#FFF4E7");
 		d.rotateX(d.HALF_PI);
 		d.rotateZ(rot);
-		d.scale(0.8*(isMouseOn?1.2:1));
+		d.scale((isMouseOn?1.2:1));
 		d.model(teapot);
-		rot+=0.05;
+		rot+=0.02;
 	};
 	d.windowResized=function()
 	{
