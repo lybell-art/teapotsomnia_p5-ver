@@ -23,4 +23,4 @@ let Showcase_Button=function(d)
 		d.resizeCanvas(vmin(20),vmin(20));
 	}
 };
-new p5(Showcase_Button,"showcase_button");
+new p5(Showcase_Button,"showcase_sketch");
