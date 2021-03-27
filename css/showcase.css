@@ -7,7 +7,7 @@ body{
 #type1{
 	position: relative;
 	width: 100%;
-	font-size:8vw;
+	font-size:4vw;
 	text-align:center;
 	padding-bottom: 20px;
   z-index: 5;
@@ -17,7 +17,7 @@ body{
 #type_buffer{
 	position: relative;
 	width: 100%;
-	font-size:15vw;
+	font-size:6vw;
 	text-align:center;
   z-index: 6;
   cursor:default;
