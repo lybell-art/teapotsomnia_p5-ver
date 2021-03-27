@@ -20,6 +20,7 @@ let Showcase_Button=function(d)
 	};
 	d.windowResized=function()
 	{
+		console.log("why");
 		d.resizeCanvas(vmin(20),vmin(20));
 	}
 };
