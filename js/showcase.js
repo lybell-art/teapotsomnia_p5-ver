@@ -186,14 +186,14 @@ function draw()
 	
 	//drawing trees
 	push();
-	scale(0.1*slider3.value());
+	scale(0.8);
 	rotateX(PI);
-	translate(100,5,-420);
+	translate(140,5,-6*slider3.value());
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
 		model(tree);
-		translate(0,0,70);
+		translate(0,0,slider3.value());
 	}
 	pop();
 	
