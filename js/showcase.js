@@ -204,14 +204,17 @@ class mind_ball{
 
 let lb=new LinearBlurSystem(5);
 
-let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, t=0;
+let t=0;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
+let mainCamera;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	noStroke();
+	mainCamera = createCamera();
+	setCamera(mainCamera);
 }
 function draw() 
 {
@@ -241,10 +244,6 @@ function draw()
 	//setting position
 	
 	cameraMove();
-	translate(transX,transY,0);
-	rotateX(rotX);
-	rotateY(-rotY);
-	scale(1+0.1*scaleFactor);
 	
 //	camera(transX,transY,(height/2.0) / tan(PI*30.0 / 180.0) / scaleFactor, rotY, rotX, 0);
 	
@@ -292,22 +291,22 @@ function windowResized()
 }
 
 function mouseDragged(){
-	rotY -= (mouseX - pmouseX) * 0.004;
-	rotX -= (mouseY - pmouseY) * 0.004;
+	mainCamera.pan((mouseX - pmouseX) * 0.004);
+	mainCamera.tilt((mouseY - pmouseY) * 0.004);
 }
 
 
 function mouseWheel(event) {
 	let e = event.delta;
-	scaleFactor -= e * 0.01;
+	mainCamera.move(0,0, e * 0.1);
 }
 
 function cameraMove()
 {
-	if (keyIsDown(LEFT_ARROW)) transX += 10;
-	if (keyIsDown(RIGHT_ARROW)) transX -= 10;
-	if (keyIsDown(UP_ARROW)) transY += 10;
-	if (keyIsDown(DOWN_ARROW)) transY -= 10;
+	if (keyIsDown(LEFT_ARROW)) mainCamera.move(10, 0, 0);
+	if (keyIsDown(RIGHT_ARROW)) mainCamera.move(-10, 0, 0);
+	if (keyIsDown(UP_ARROW)) mainCamera.move(0, 10, 0);
+	if (keyIsDown(DOWN_ARROW)) mainCamera.move(0, -10, 0);
 }
 
 window.addEventListener("keydown", e => {
