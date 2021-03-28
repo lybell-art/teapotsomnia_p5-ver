@@ -232,5 +232,4 @@ function toggleClick(e)
 	isCam=!isCam;
 	if(isCam) e.classList.add('camOn');
 	else e.classList.remove('camOn');
-	console.log(isCam);
 }
