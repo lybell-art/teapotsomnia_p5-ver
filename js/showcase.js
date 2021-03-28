@@ -281,8 +281,8 @@ function draw()
 	
 	dream_blobs.forEach(blob => blob.display());
 	
-	time += 60.0/frameRate();
-	console.log(frameRate());
+	t += 60.0/frameRate();
+	console.log(t);
 }
 
 function windowResized()
