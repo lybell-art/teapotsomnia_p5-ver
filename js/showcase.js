@@ -143,7 +143,8 @@ class LinearBlurSystem{
 			console.log("Can't return blur gradient!");
 			return;
 		}
-		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen-1]};	
+		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen-1]};
+		
 		return res;
 	}
 	pop()
