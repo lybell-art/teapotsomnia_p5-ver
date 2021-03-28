@@ -155,6 +155,8 @@ function setup()
 function draw() 
 {
 	clear();
+	push();
+	
 	//setting camera and light
 	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
 	lights();
@@ -201,10 +203,12 @@ function draw()
 	model(teapot);
 	pop();
 	
+	pop();
+	
 	if(isCam)
 	{
 		image(cam,0,0,0,0);
-		blend(cam, 0, 0, width, height, 0, 0, width, height, SOFT_LIGHT);
+//		blend(cam, 0, 0, width, height, 0, 0, width, height, SOFT_LIGHT);
 	}
 }
 
