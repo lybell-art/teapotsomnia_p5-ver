@@ -12,7 +12,6 @@ function preload() {
 }
 */
 let bufferStr="";
-const button = document.querySelector('#cam_button');
 let isCam=false;
 
 function HSBtoRGB(h, s, v) {
@@ -247,6 +246,8 @@ window.addEventListener("keydown", e => {
 		buffer.textContent=bufferStr+"_";
 	}
 });
+
+const button = document.querySelector('#cam_button');
 
 button.addEventListener('click', event => {
 	isCam=!isCam;
