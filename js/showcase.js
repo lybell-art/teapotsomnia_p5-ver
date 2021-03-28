@@ -166,7 +166,7 @@ class mind_ball{
 				break;
 			case 2:
 				this.size=1; this.x-=0.1*amplify;
-				if(x <= -2)
+				if(this.x <= -2)
 				{
 				  this.wait_time=0; absorbed=true; this.phase = 3;
 				}
@@ -195,7 +195,8 @@ class mind_ball{
 	{
 		push();
 		fill(this.col.r, this.col.g, this.col.b, this.alpha);
-		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
+//		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
+		translate(slider1.value(),slider2.value(),slider3.value());
 		sphere(this.size);
 		pop();
 	}
@@ -207,11 +208,18 @@ let lb=new LinearBlurSystem(5);
 let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
+var slider1, slider2, slider3;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL);
 	noStroke();
+	slider1=createSlider(-500, 500, 0);
+	slider1.position(10, 10);
+	slider2=createSlider(-500, 500, 0);
+	slider2.position(10, 40);
+	slider3=createSlider(-500, 500, 0);
+	slider3.position(10, 70);
 }
 function draw() 
 {
@@ -221,7 +229,7 @@ function draw()
 	{
 		dream_blobs.push(new mind_ball());
 		time -= 360;
-	}
+	}/*
 	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
 		if(temp_color !== "") dream_color=temp_color;
@@ -230,7 +238,7 @@ function draw()
 	for (var i = dream_blobs.length -1; i >=0; i--) {
 		var blob = dream_blobs[i];
 		if(blob.finished()) dream_blobs.splice(i,1);
-	}
+	}*/
 	
 	clear();
 	//setting camera and light
