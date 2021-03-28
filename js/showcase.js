@@ -209,7 +209,7 @@ function mouseDragged(){
 
 function mouseWheel(event) {
 	let e = event.delta;
-	scaleFactor -= e * 1.00002;
+	scaleFactor -= e * 0.01;
 }
 
 window.onload = function() {
