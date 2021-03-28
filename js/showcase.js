@@ -211,6 +211,11 @@ function draw()
 	console.log("size of trees : "+slider3.value());
 }
 
+function windowResized()
+{
+	resizeCanvas(windowWdith, windowHeight, false);
+}
+
 window.onload = function() {
 	var context = new AudioContext();
 }
