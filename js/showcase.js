@@ -203,13 +203,13 @@ function windowResized()
 }
 
 function mouseDragged(){
-	rotY -= (mouseX - pmouseX) * 0.002;
-	rotX -= (mouseY - pmouseY) * 0.002;
+	rotY -= (mouseX - pmouseX) * 0.004;
+	rotX -= (mouseY - pmouseY) * 0.004;
 }
 
 function mouseWheel(event) {
 	let e = event.delta;
-	scaleFactor -= e * 1.002;
+	scaleFactor -= e * 1.00002;
 }
 
 window.onload = function() {
