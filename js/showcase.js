@@ -141,23 +141,21 @@ class LinearBlurSystem{
 
 let lb=new LinearBlurSystem(5);
 
-let rotX=-0.5, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
+let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
-let slider1, slider2, slider3, slider4;
+let slider1, slider2, slider3;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
-	slider1=createSlider(-100, 0, -50);
+	slider1=createSlider(-100, 0, -45);
 	slider2=createSlider(-200, 200, 58);
-	slider3=createSlider(0, 500, 100);
-	slider4=createSlider(-200, 200, 0);
+	slider3=createSlider(0, 500, 230);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
 	slider3.position(10, 70);
-	slider4.position(10, 100);
 }
 function draw() 
 {
@@ -190,12 +188,12 @@ function draw()
 	push();
 	scale(0.4);
 	rotateX(PI);
-	translate(300,100,-6*slider3.value());
+	translate(300,slider3.value(),-6*230);
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
 		model(tree);
-		translate(0,0,slider3.value());
+		translate(0,0,230);
 	}
 	pop();
 	
@@ -203,13 +201,12 @@ function draw()
 	push();
 	rotateX(HALF_PI);
 	rotateZ(-HALF_PI);
-	translate(0,-slider4.value(),60);
+	translate(0,-120,60);
 	fill(teapotColor);
 	model(teapot);
 	pop();
 	
 	console.log("tree : "+slider3.value());
-	console.log("teapot Y : "+slider4.value());
 }
 
 function windowResized()
