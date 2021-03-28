@@ -185,7 +185,7 @@ class mind_ball{
 				break;
 		}
 		if(absorbed) return this.col;
-		else return 0;
+		else return "";
 	}
 	finished()
 	{
@@ -206,6 +206,7 @@ let lb=new LinearBlurSystem(5);
 
 let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
+let dream_blobs=[];
 
 function setup() 
 { 
@@ -214,6 +215,24 @@ function setup()
 }
 function draw() 
 {
+	let dream_color="";
+	let temp_color;
+	if(time >= 300)
+	{
+		dream_blobs.push(new mind_ball());
+		time -= 360;
+	}
+	for (var i = 0; i < dream_blobs.size(); i++) {
+		var blob = dream_blobs[i];
+		temp_color=blob.movement();
+		if(temp_color !== "") dream_color=temp_color;
+	}
+	if(dream_color !== "") teapotColor=dream_color;
+	for (var i = dream_blobs.size() -1; i >=0; i--) {
+		var blob = dream_blobs[i];
+		if(blob.finished()) dream_blobs.splice(i,1);
+	}
+	
 	clear();
 	//setting camera and light
 	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
@@ -260,6 +279,10 @@ function draw()
 	fill(teapotColor);
 	model(teapot);
 	pop();
+	
+	dream_blobs.forEach(blob => blob.display());
+	
+	time+=60.0/frameRate();
 }
 
 function windowResized()
