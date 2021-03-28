@@ -195,7 +195,7 @@ function draw()
 	for(var i=0; i<13; i++)
 	{
 		model(tree);
-		translate(0,0,slider3.value());
+		translate(0,50,slider3.value());
 	}
 	pop();
 	
