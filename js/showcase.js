@@ -141,7 +141,7 @@ class LinearBlurSystem{
 
 let lb=new LinearBlurSystem(5);
 
-let rotX=-0.56, rotY=0.6, transX=0, transY=0, scaleFactor=0, time=0;
+let rotX=-0.5, rotY=0.4, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
 let slider1, slider2, slider3;
@@ -150,9 +150,9 @@ function setup()
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
-	slider1=createSlider(-100, 100, -56);
-	slider2=createSlider(-100, 100, 60);
-	slider3=createSlider(0, 10, 1);
+	slider1=createSlider(-100, 100, -50);
+	slider2=createSlider(-100, 100, 40);
+	slider3=createSlider(0, 100, 50);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
 	slider3.position(10, 70);
