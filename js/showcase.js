@@ -215,7 +215,7 @@ function setup()
 	noStroke();
 	mainCamera = createCamera();
 	setCamera(mainCamera);
-	mainCamera.setPosition(330,480,580);
+	mainCamera.setPosition(330,-480,580);
 	mainCamera.lookAt(0,-50,0);
 }
 function draw() 
