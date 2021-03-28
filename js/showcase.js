@@ -143,20 +143,15 @@ let lb=new LinearBlurSystem(5);
 
 let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
-let cam;
 
 function setup() 
 { 
-	createCanvas(windowWidth, windowHeight, WEBGL); 
+	createCanvas(windowWidth, windowHeight, WEBGL);
 	noStroke();
-	cam = createCapture(VIDEO);
-	cam.hide();
 }
 function draw() 
 {
 	clear();
-	push();
-	
 	//setting camera and light
 	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
 	lights();
@@ -202,14 +197,6 @@ function draw()
 	fill(teapotColor);
 	model(teapot);
 	pop();
-	
-	pop();
-	
-	if(isCam)
-	{
-		image(cam,-width,-height,width,height);
-//		blend(cam, 0, 0, width, height, 0, 0, width, height, SOFT_LIGHT);
-	}
 }
 
 function windowResized()
