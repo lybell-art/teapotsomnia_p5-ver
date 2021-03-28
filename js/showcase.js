@@ -207,7 +207,7 @@ function draw()
 	
 	if(isCam)
 	{
-		image(cam,0,0,0,0);
+		image(cam,-width,-height,width,height);
 //		blend(cam, 0, 0, width, height, 0, 0, width, height, SOFT_LIGHT);
 	}
 }
