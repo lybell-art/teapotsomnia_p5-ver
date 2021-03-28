@@ -175,7 +175,7 @@ class mind_ball{
 				this.size=0; this.wait_time+=amplify;
 				if(this.wait_time >= 25)
 				{
-				  this.x=-122; this.y=-100; this.z=-87; this.size=3; this.phase = 4;
+				  this.x=-119; this.y=-100; this.z=-87; this.size=3; this.phase = 4;
 				}
 				break;
 			case 4:
