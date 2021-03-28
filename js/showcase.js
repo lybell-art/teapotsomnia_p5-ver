@@ -153,9 +153,7 @@ function draw()
 {
 	clear();
 	//setting camera and light
-	beginCamera();
 	camera(0,-400, (height/2.0) / tan(PI*30.0 / 180.0),0,-200,0,0,1,0);
-	endCamera();
 	lights();
 	ambientLight(34,5,15);
 	directionalLight(135,135,135, -1, 1, -1);
