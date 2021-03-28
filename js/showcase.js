@@ -141,7 +141,7 @@ class LinearBlurSystem{
 class mind_ball{
 	constructor(c)
 	{
-		this.x=8; this.y=-7; this.z=70; this.size=1;
+		this.x=8; this.y=-7; this.z=70; this.size=10;
 		this.phase=1;
 		this.alpha=256;
 		this.wait_time=-1;
@@ -158,14 +158,14 @@ class mind_ball{
 		switch(this.phase)
 		{
 			case 1:
-				this.size=1; this.z-=0.1*amplify;
+				this.size=10; this.z-=0.1*amplify;
 				if(this.z <= 0)
 				{
 				  this.z=0; this.phase = 2;
 				}
 				break;
 			case 2:
-				this.size=1; this.x-=0.1*amplify;
+				this.size=10; this.x-=0.1*amplify;
 				if(this.x <= -2)
 				{
 				  this.wait_time=0; absorbed=true; this.phase = 3;
@@ -179,9 +179,9 @@ class mind_ball{
 				}
 				break;
 			case 4:
-				this.size+=0.01*amplify; this.y-=0.1*amplify;
-				if(this.size >= 3.72) this.alpha -= 2;
-				if(this.size >= 5) this.phase = 5;
+				this.size+=0.1*amplify; this.y-=0.1*amplify;
+				if(this.size >= 37.2) this.alpha -= 2;
+				if(this.size >= 50) this.phase = 5;
 				break;
 		}
 		if(absorbed) return rgb2hex(this.col);
@@ -296,11 +296,12 @@ function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight, false);
 }
-
+/*
 function mouseDragged(){
 	rotY -= (mouseX - pmouseX) * 0.004;
 	rotX -= (mouseY - pmouseY) * 0.004;
 }
+*/
 
 function mouseWheel(event) {
 	let e = event.delta;
