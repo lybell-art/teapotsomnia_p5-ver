@@ -100,14 +100,15 @@ class LinearBlurSystem{
 	{
 		let blurRadius2=Math.min(this.blurRadius,this.length);
 		console.log(this.colBuffer);
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colsum[i]);
+		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
 		console.log(blurRadius2);
 		for(var i=blurRadius2; i>1; i--)
 		{
 			let prevCol3=this.colBuffer[this.length-i];
+			console.log(this.length-i);
 			this.colSum.push(LinearBlurSystem.sub(this.colSum[this.colSum.length-1],prevCol3));
 		}
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colsum[i]);
+		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
 		
 		let sumLen=this.colSum.length;
 		for(var i=0; i <sumLen; i++)
@@ -118,7 +119,7 @@ class LinearBlurSystem{
 			else division=sumLen-i;
 			this.colSum[i]=LinearBlurSystem.div(this.colSum[i],division);
 		}
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colsum[i]);
+		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
 		return this.colSum;
 	}
 	
