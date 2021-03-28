@@ -234,17 +234,19 @@ function draw()
 	
 	clear();
 	//setting camera and light
-	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
+//	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
 	lights();
 	ambientLight(34,5,15);
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	
 	cameraMove();
-	translate(transX,transY,0);
-	rotateX(rotX);
-	rotateY(-rotY);
-	scale(1+0.1*scaleFactor);
+//	translate(transX,transY,0);
+//	rotateX(rotX);
+//	rotateY(-rotY);
+//	scale(1+0.1*scaleFactor);
+	
+	camera(transX,transY,(height/2.0) / tan(PI*30.0 / 180.0) * scaleFactor, rotX, rotY, 0);
 	
 	//drawing terrain
 	push();
