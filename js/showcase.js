@@ -207,7 +207,7 @@ function mouseDragged(){
 	rotX -= (mouseY - pmouseY) * 0.01;
 }
 
-function mouseWheel(e) {
+function mouseWheel(event) {
 	float e = event.getCount();
 	scaleFactor -= e * 1.002;
 }
