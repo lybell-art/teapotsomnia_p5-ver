@@ -208,7 +208,7 @@ function mouseDragged(){
 }
 
 function mouseWheel(event) {
-	float e = event.getCount();
+	let e = event.getCount();
 	scaleFactor -= e * 1.002;
 }
 
