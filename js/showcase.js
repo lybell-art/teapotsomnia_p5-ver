@@ -147,7 +147,7 @@ class LinearBlurSystem{
 		let level=Math.min(blurLen,l);
 		for(var i=1; i<level;i++)
 		{
-			res[i/level]=this.colSum[Math.round(level/i)];
+			res[i/level]=this.colSum[i*Math.round(blurLen/level)];
 		}
 		return res;
 	}
