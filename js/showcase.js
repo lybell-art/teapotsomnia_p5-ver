@@ -141,21 +141,23 @@ class LinearBlurSystem{
 
 let lb=new LinearBlurSystem(5);
 
-let rotX=-0.5, rotY=0.4, transX=0, transY=0, scaleFactor=0, time=0;
+let rotX=-0.5, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
-let slider1, slider2, slider3;
+let slider1, slider2, slider3, slider4;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
 	slider1=createSlider(-100, 100, -50);
-	slider2=createSlider(-100, 100, 40);
+	slider2=createSlider(-100, 100, 58);
 	slider3=createSlider(0, 200, 100);
+	slider4=createSlider(-200, 200, 0);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
 	slider3.position(10, 70);
+	slider4.position(10, 100);
 }
 function draw() 
 {
@@ -201,14 +203,13 @@ function draw()
 	push();
 	rotateX(HALF_PI);
 	rotateZ(-HALF_PI);
-	translate(0,-9,3);
+	translate(0,-9,slider4.value());
 	fill(teapotColor);
 	model(teapot);
 	pop();
 	
-	console.log("rotX : "+slider1.value());
-	console.log("rotY : "+slider2.value());
-	console.log("size of trees : "+slider3.value());
+	console.log("tree : "+slider3.value());
+	console.log("teapot Z : "+slider4.value());
 }
 
 function windowResized()
