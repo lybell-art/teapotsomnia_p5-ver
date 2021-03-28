@@ -94,7 +94,14 @@ window.addEventListener("keydown", e => {
 		if(e.keyCode == 13) //enter
 		{
 			bufferStr="";
-			console.log(colBuffer);
+			let colLen=colBuffer.length;
+			let lastCol=colSum[colLen-1];
+			for(var i=blurRadius; i>1; i--)
+			{
+				let prevCol3=colBuffer[colLen-i];
+				colSum.push(subCol(lastCol,prevCol3));
+			}
+			console.log(colSum);
 			colBuffer=[];
 			colSum=[];
 		}
