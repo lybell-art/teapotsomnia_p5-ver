@@ -201,10 +201,19 @@ class mind_ball{
 	}
 }
 
+function extractCameraPos(cam)
+{
+	if(cam)
+	{
+		return {eyeX:cam.eyeX, eyeY:cam.eyeY, eyeZ:cam.eyeZ, centerX:cam.centerX, centerY:cam.centerY, centerZ:cam.centerZ};
+	}
+	else return {eyeX:0, eyeY:0, eyeZ:(height/2.0) / tan(PI*30.0 / 180.0), centerX:0, centerY:0, centerZ:0};
+}
+
 
 let lb=new LinearBlurSystem(5);
 
-let t=0;
+let t=0, cameraPos;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
 let mainCamera;
@@ -217,6 +226,7 @@ function setup()
 	setCamera(mainCamera);
 	mainCamera.setPosition(330,-480,580);
 	mainCamera.lookAt(0,-50,0);
+	cameraPos={eyeX:330, eyeY:-480, eyeZ:550, centerX:0, centerY:-50, centerZ:0};
 }
 function draw() 
 {
@@ -247,6 +257,7 @@ function draw()
 	
 	cameraMove();
 	orbitControl(2,2,0);
+	cameraPos=extractCameraPos(mainCamera);
 	
 	//drawing terrain
 	push();
@@ -289,6 +300,8 @@ function draw()
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight, false);
+	mainCamera.setPosition(cameraPos.eyeX,cameraPos.eyeY,cameraPos.eyeZ);
+	mainCamera.lookAt(cameraPos.centerX,cameraPos.centerY,cameraPos.centerZ);
 }
 
 function mouseWheel(event) {
