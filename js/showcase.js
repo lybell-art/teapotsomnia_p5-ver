@@ -150,7 +150,7 @@ function setup()
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
-	slider1=createSlider(0, 10, 1);
+	slider1=createSlider(-100, 100, 0);
 	slider2=createSlider(0, 10, 1);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
@@ -159,12 +159,13 @@ function draw()
 {
 	clear();
 	//setting camera and light
-//	camera(0,-400, (height/2.0) / tan(PI*30.0 / 180.0),0,-200,0,0,1,0);
+	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
 	lights();
 	ambientLight(34,5,15);
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	translate(transX,transY,0);
+	rotY=0.01*slider1.value();
 	rotateX(rotX);
 	rotateY(-rotY);
 	scale(1+scaleFactor);
@@ -172,17 +173,17 @@ function draw()
 	//drawing terrain
 	push();
 	rotateX(PI);
-	scale(slider1.value());
+	scale(7);
 	fill(117,203,255);
 	model(terrain1);
-	translate(0,3,0);
+	translate(0,2,0);
 	fill(255,229,245);
 	model(terrain2);
 	pop();
 	
 	//drawing trees
 	push();
-	scale(slider2.value());
+	scale(0.1*slider2.value());
 	rotateX(PI);
 	translate(10,2,-42);
 	fill(65, 166, 159);
