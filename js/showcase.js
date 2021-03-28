@@ -3,7 +3,7 @@ let teapot, tree, terrain1, terrain2; //3D objects
 function preload() {
 	teapot = loadModel('assets/teapot.obj', true);
 	tree = loadModel("assets/simpletree.obj", true);
-	terrain1 = loadModel("assets/terrain.obj", true);
+	terrain1 = loadModel("assets/terraintest.obj", true);
 	terrain2 = loadModel("assets/terrain2.obj", true);
 }
 
