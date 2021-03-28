@@ -190,7 +190,7 @@ function draw()
 	push();
 	scale(0.4);
 	rotateX(PI);
-	translate(300,50,-6*slider3.value());
+	translate(300,100,-6*slider3.value());
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
