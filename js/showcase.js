@@ -222,13 +222,12 @@ function draw()
 		dream_blobs.push(new mind_ball());
 		time -= 360;
 	}
-	for (var i = 0; i < dream_blobs.size(); i++) {
-		var blob = dream_blobs[i];
+	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
 		if(temp_color !== "") dream_color=temp_color;
-	}
+	});
 	if(dream_color !== "") teapotColor=dream_color;
-	for (var i = dream_blobs.size() -1; i >=0; i--) {
+	for (var i = dream_blobs.length -1; i >=0; i--) {
 		var blob = dream_blobs[i];
 		if(blob.finished()) dream_blobs.splice(i,1);
 	}
