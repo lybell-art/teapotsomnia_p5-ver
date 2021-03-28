@@ -28,13 +28,13 @@ body{
 	height:80px;
 	right:25px;
 	top:25px;
-	background-color:#00ffff;
+	background-image:url("../assets/camera_ico.png");
 	z-index: 10;
 	cursor:pointer;
 }
 
 #cam_button.camOn{
-	background-color:#0000ff;
+	background-image:url("../assets/camera_ico_off.png");
 }
 
 
