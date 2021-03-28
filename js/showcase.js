@@ -1,16 +1,12 @@
-/*
 let teapot, tree, terrain1, terrain2; //3D objects
-let ico1, ico2 // 2D icons
 
 function preload() {
 	teapot = loadModel('assets/teapot.obj', true);
-	tree = loadShape("assets/simpletree.obj", true);
-	terrain1 = loadShape("assets/terrain.obj", true);
-	terrain2 = loadShape("assets/terrain2.obj", true);
-	ico1 = loadImage('assets/camera_ico.jpg');
-	ico2 = loadImage("assets/camera_off_ico.png");
+	tree = loadModel("assets/simpletree.obj", true);
+	terrain1 = loadModel("assets/terrain.obj", true);
+	terrain2 = loadModel("assets/terrain2.obj", true);
 }
-*/
+
 let bufferStr="";
 let isCam=false;
 
@@ -146,27 +142,61 @@ class LinearBlurSystem{
 
 let lb=new LinearBlurSystem(5);
 
+let rotX, rotY, transX, transY, scaleFactor, time;
+
 function setup() 
 { 
-	createCanvas(windowWidth, windowHeight); 
+	createCanvas(windowWidth, windowHeight, P3D); 
 	noStroke();
 }
 function draw() 
 {
 	clear();
-	if (mouseIsPressed) 
+	//setting camera and light
+	beginCamera();
+	camera(0,-400, (height/2.0) / tan(PI*30.0 / 180.0),0,-200,0,0,1,0);
+	endCamera();
+	lights();
+	ambientLight(34,5,15);
+	directionalLight(135,135,135, -1, 1, -1);
+	//setting position
+	translate(transX,transY,0);
+	rotateX(rotX);
+	rotateY(-rotY);
+	scale(1+scaleFactor);
+	
+	//drawing terrain
+	push();
+	rotateX(PI);
+	scale(1);
+	fill(117,203,255);
+	model(terrain1);
+	translate(0,3,0);
+	fill(255,229,245);
+	model(terrain2);
+	pop();
+	
+	//drawing trees
+	push();
+	scale(1.7);
+	rotateX(PI);
+	translate(10,2,-42);
+	fill(65, 166, 159);
+	for(var i=0; i<13; i++)
 	{
-//		var size = map(dist(mouseX,mouseY,pmouseX,pmouseY),0,400,5,80);
-		var size=20;
-		ellipse(mouseX, mouseY, size, size); 
+		model(tree);
+		translate(0,0,7);
 	}
-	if(keyIsPressed)
-	{
-		if(key==" ")
-		{
-			background("#ab1300");
-		}
-	}
+	pop();
+	
+	//drawing teapot
+	push();
+	rotateX(HALF_PI);
+	rotateZ(-HALF_PI);
+	translate(0,-9,3);
+	fill(teapotColor);
+	model(teapot);
+	pop();
 }
 
 
