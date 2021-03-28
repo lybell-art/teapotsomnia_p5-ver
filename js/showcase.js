@@ -147,7 +147,7 @@ class mind_ball{
 		this.wait_time=-1;
 		this.ms=0;
 		this.col="#ffffff";
-		if(!c) rgb2hex(random(192,256),random(192,256),random(192,256));
+		if(!c) this.col=rgb2hex(random(192,256),random(192,256),random(192,256));
 		else this.col=rgb2hex(c);
 	}
 	movement()
