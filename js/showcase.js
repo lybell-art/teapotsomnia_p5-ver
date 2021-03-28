@@ -54,6 +54,29 @@ function char2col(a)
 	return res;
 }
 
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+function rgb2hex(r,g,b)
+{
+	if (arguments.length === 1) {
+		g = r.g, b = r.b, r = r.r;
+	}
+	 return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+function changeBGgrad(grad)
+{
+	let body=document.getElementsByTagName("body")[0];
+	let str="linear-gradient(";
+	for(var i=0; i<grad.length; i++)
+	{
+		str+=grad[i];
+		if(i < grad.length-1) str+=",";
+	}
+	str+=")";
+	body.style.backgroundImage = str;
+}
 
 
 
@@ -143,12 +166,13 @@ class LinearBlurSystem{
 			console.log("Can't return blur gradient!");
 			return;
 		}
-		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen]};
+		let res=[this.colSum[0]]
 		let level=Math.min(blurLen,l);
 		for(var i=1; i<level;i++)
 		{
-			res[i/level]=this.colSum[i*Math.round(blurLen/level)];
+			res.push(this.colSum[i*Math.round(blurLen/level)]);
 		}
+		res.push(this.colSum[blurLen]);
 		return res;
 	}
 	pop()
@@ -208,6 +232,7 @@ window.addEventListener("keydown", e => {
 			bufferStr="";
 			lb.blur();
 			console.log(lb.grad(3));
+			changeBGgrad(lb.grad(3));
 			lb.clear();
 		}
 		else if(e.keyCode == 8) //backspace
