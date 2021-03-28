@@ -194,7 +194,8 @@ class mind_ball{
 	display()
 	{
 		push();
-		fill(this.col, this.alpha);
+		console.log(this.col);
+//		fill(this.col, this.alpha);
 		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
 		sphere(this.size);
 		pop();
