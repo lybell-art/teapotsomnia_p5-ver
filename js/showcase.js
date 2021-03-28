@@ -147,8 +147,8 @@ class mind_ball{
 		this.wait_time=-1;
 		this.ms=0;
 		this.col="#ffffff";
-		if(!c) this.col=rgb2hex(random(192,256),random(192,256),random(192,256));
-		else this.col=rgb2hex(c);
+		if(!c) this.col={r:random(192,256),g:random(192,256),b:random(192,256)};
+		else this.col=c;
 	}
 	movement()
 	{
@@ -184,7 +184,7 @@ class mind_ball{
 				if(this.size >= 5) this.phase = 5;
 				break;
 		}
-		if(absorbed) return this.col;
+		if(absorbed) return rgb2hex(this.col);
 		else return "";
 	}
 	finished()
@@ -194,8 +194,7 @@ class mind_ball{
 	display()
 	{
 		push();
-		console.log(this.col);
-//		fill(this.col, this.alpha);
+		fill(this.col.r, this.col.g, this.col.b, this.alpha);
 		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
 		sphere(this.size);
 		pop();
