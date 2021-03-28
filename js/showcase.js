@@ -153,9 +153,9 @@ class mind_ball{
 	movement()
 	{
 		let absorbed=false;
-		let amplify=60.0/frameRate;
+		let amplify=60.0/frameRate();
 		this.ms+=0.04*amplify;
-		switch(phase)
+		switch(this.phase)
 		{
 			case 1:
 				this.size=1; this.z-=0.1*amplify;
