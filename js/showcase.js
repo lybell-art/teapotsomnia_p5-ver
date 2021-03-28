@@ -329,7 +329,7 @@ window.addEventListener("keydown", e => {
 			bufferStr+=e.key;
 			let currentCol=char2col(e.key);
 			lb.push(currentCol);
-			dreams_ball.push(new mind_ball(currentCol));
+			dream_blobs.push(new mind_ball(currentCol));
 			t=0;
 		}
 		buffer.textContent=bufferStr+"_";
