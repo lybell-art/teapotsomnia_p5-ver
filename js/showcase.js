@@ -251,6 +251,15 @@ window.addEventListener("keydown", e => {
 function toggleClick(e)
 {
 	isCam=!isCam;
-	if(isCam) e.classList.add('camOn');
-	else e.classList.remove('camOn');
+	const camLayer=document.getElementById("cam_overlay");
+	if(isCam)
+	{
+		e.classList.add('camOn');
+		camLayer.style.visibility="visible";
+	}
+	else
+	{
+		e.classList.remove('camOn');
+		camLayer.style.visibility="hidden";
+	}
 }
