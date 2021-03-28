@@ -281,7 +281,7 @@ function draw()
 	
 	dream_blobs.forEach(blob => blob.display());
 	
-	t += 60.0/frameRate();
+	if(frameRate() > 1) t += 60.0/frameRate();
 	console.log(t);
 }
 
