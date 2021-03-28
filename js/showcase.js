@@ -77,7 +77,7 @@ class LinearBlurSystem{
 	}
 	static div(a,scalar)
 	{
-		return {r: a.r/scalar , g:a.g/scalar, b:a.b/scalar};
+		return {r: Math.round(a.r/scalar) , g:Math.round(a.g/scalar), b:Math.round(a.b/scalar)};
 	}
 	push(c)
 	{
@@ -130,21 +130,25 @@ class LinearBlurSystem{
 		this.isEnded=true;
 		return this.colSum;
 	}
-	grad(div)
+	grad(l)
 	{
 		if(!this.isEnded)
 		{
 			console.log("Blurring Calculation is not yet over!");
 			return;
 		}
-		let blurLen=this.colSum.length;
-		if(blurLen == 0)
+		let blurLen=this.colSum.length -1;
+		if(blurLen < 0)
 		{
 			console.log("Can't return blur gradient!");
 			return;
 		}
-		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen-1]};
-		
+		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen]};
+		let level=Math.min(blurLen,l);
+		for(var i=1; i<level;i++)
+		{
+			res[i/level]=this.colSum[Math.round(level/i)];
+		}
 		return res;
 	}
 	pop()
@@ -203,6 +207,7 @@ window.addEventListener("keydown", e => {
 		{
 			bufferStr="";
 			lb.blur();
+			console.log(lb.grad(3));
 			lb.clear();
 		}
 		else if(e.keyCode == 8) //backspace
