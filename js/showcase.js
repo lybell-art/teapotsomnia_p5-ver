@@ -158,6 +158,7 @@ function draw()
 	ambientLight(34,5,15);
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
+	
 	translate(transX,transY,0);
 	rotateX(rotX);
 	rotateY(-rotY);
@@ -210,6 +211,14 @@ function mouseDragged(){
 function mouseWheel(event) {
 	let e = event.delta;
 	scaleFactor -= e * 0.01;
+}
+
+function cameraMove()
+{
+	if (keyIsDown(LEFT_ARROW)) transX += 10;
+	if (keyIsDown(RIGHT_ARROW)) transX -= 10;
+	if (keyIsDown(UP_ARROW)) transY -= 10;
+	if (keyIsDown(DOWN_ARROW)) transY += 10;
 }
 
 window.onload = function() {
