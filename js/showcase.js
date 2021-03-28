@@ -12,8 +12,8 @@ function preload() {
 }
 */
 let bufferStr="";
-let colBuffer=[], colSum=[];
-let blurRadius=5;
+const button = document.querySelector('#cam_button');
+let isCam=false;
 
 function HSBtoRGB(h, s, v) {
     var r, g, b, i, f, p, q, t;
@@ -246,4 +246,10 @@ window.addEventListener("keydown", e => {
 		}
 		buffer.textContent=bufferStr+"_";
 	}
+});
+
+button.addEventListener('click', event => {
+	camOn=!camOn;
+	if(isCam) button.classList.add('camOn');
+	else button.classList.remove('camOn');
 });
