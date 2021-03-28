@@ -34,7 +34,7 @@ body{
 }
 
 #cam_button.camOn{
-	background-image:url("../assets/camera_ico_off.png");
+	background-image:url("../assets/camera_off_ico.png");
 }
 
 
