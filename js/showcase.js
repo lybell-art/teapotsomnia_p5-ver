@@ -75,8 +75,6 @@ function changeBGgrad(grad)
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
-	console.log(str);
-	let prefix=["-webkit-","-moz-","-o-","-ms-"];
 	["-webkit-","-moz-","-o-","-ms-"].forEach(prefix => body.style.backgroundImage = prefix+str);
 }
 
