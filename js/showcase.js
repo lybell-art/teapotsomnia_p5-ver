@@ -144,16 +144,18 @@ let lb=new LinearBlurSystem(5);
 let rotX=-0.11, rotY=0.8, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
-let slider1, slider2;
+let slider1, slider2, slider3;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
 	slider1=createSlider(-100, 100, 0);
-	slider2=createSlider(0, 10, 1);
+	slider2=createSlider(-100, 100, 0);
+	slider3=createSlider(0, 10, 1);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
+	slider3.position(10, 70);
 }
 function draw() 
 {
@@ -165,7 +167,8 @@ function draw()
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	translate(transX,transY,0);
-	rotY=0.01*slider1.value();
+	rotX=0.01*slider1.value();
+	rotY=0.01*slider2.value();
 	rotateX(rotX);
 	rotateY(-rotY);
 	scale(1+scaleFactor);
@@ -183,14 +186,14 @@ function draw()
 	
 	//drawing trees
 	push();
-	scale(0.1*slider2.value());
+	scale(0.1*slider3.value());
 	rotateX(PI);
-	translate(10,2,-42);
+	translate(100,5,-420);
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
 		model(tree);
-		translate(0,0,7);
+		translate(0,0,70);
 	}
 	pop();
 	
