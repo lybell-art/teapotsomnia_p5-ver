@@ -11,6 +11,10 @@ function preload() {
 	ico2 = loadImage("assets/camera_off_ico.png");
 }
 */
+let bufferStr="";
+let colBuffer=[], colSum=[];
+let blurRadius=5;
+
 function HSBtoRGB(h, s, v) {
     var r, g, b, i, f, p, q, t;
     if (arguments.length === 1) {
@@ -50,18 +54,87 @@ function char2col(a)
 	return res;
 }
 
-function addCol(a,b)
-{
-	return {r: a.r+b.r , g:a.g+b.g, b:a.b+b.b};
-}
-function subCol(a,b)
-{
-	return {r: a.r-b.r , g:a.g-b.g, b:a.b-b.b};
+
+
+
+
+class LinearBlurSystem{
+	constructor(radius)
+	{
+		this.blurRadius=radius;
+		this.colBuffer=[];
+		this.colSum=[];
+		this.length=0;
+	}
+	static add(a,b)
+	{
+		return {r: a.r+b.r , g:a.g+b.g, b:a.b+b.b};
+	}
+	static sub(a,b)
+	{
+		return {r: a.r-b.r , g:a.g-b.g, b:a.b-b.b};
+	}
+	static div(a,scalar)
+	{
+		return {r: a.r/scalar , g:a.g/scalar, b:a.b/scalar};
+	}
+	push(c)
+	{
+		this.colBuffer.push(c);
+		if(this.length == 0) this.colSum.push(c);
+		else
+		{
+			let prevCol=this.colSum[this.length-1];
+			let resultCol=LinearBlurSystem.add(prevCol,c);
+			if(this.length >= this.blurRadius)
+			{
+				let prevCol2=this.colSum[this.length-this.blurRadius];
+				resultCol=LinearBlurSystem.sub(resultCol,prevCol2);
+			}
+			this.colSum.push(resultCol);
+		}
+		this.length++;
+	}
+
+	blur()
+	{
+		let blurRadius2=Math.min(this.blurRadius,this.length);
+		for(var i=blurRadius2; i>1; i--)
+		{
+			let prevCol3=this.colBuffer[this.length-i];
+			this.colSum.push(LinearBlurSystem.sub(this.colSum[this.colSum.length-1],prevCol3));
+		}
+		
+		let sumLen=this.colSum.length;
+		for(var i=0; i <sumLen; i++)
+		{
+			let division=0;
+			if(i >= blurRadius2-1 && i < this.length) division=blurRadius2;
+			else if(i <blurRadius2-1) division=i+1;
+			else division=sumLen-i;
+			this.colSum[i]=LinearBlurSystem.div(this.colSum[i],division);
+		}
+		console.log(this.colSum);
+		return this.colSum;
+	}
+	
+	pop()
+	{
+		this.colBuffer.pop();
+		this.colSum.pop();
+		if(this.length>0) this.length--;
+	}
+	
+	clear()
+	{
+		this.colBuffer=[];
+		this.colSum=[];
+		this.length=0;
+	}
 }
 
-let bufferStr="";
-let colBuffer=[], colSum=[];
-let blurRadius=5;
+
+let lb=new LinearBlurSystem(5);
 
 function setup() 
 { 
@@ -94,41 +167,19 @@ window.addEventListener("keydown", e => {
 		if(e.keyCode == 13) //enter
 		{
 			bufferStr="";
-			let colLen=colBuffer.length;
-			let lastCol=colSum[colLen-1];
-			let blurRadius2=Math.min(blurRadius,colLen);
-			for(var i=blurRadius2; i>1; i--)
-			{
-				let prevCol3=colBuffer[colLen-i];
-				colSum.push(subCol(lastCol,prevCol3));
-			}
-			console.log(colSum);
-			colBuffer=[];
-			colSum=[];
+			lb.blur();
+			lb.clear();
 		}
 		else if(e.keyCode == 8) //backspace
 		{
 			bufferStr=bufferStr.slice(0,-1);
-			colBuffer.pop();
-			colSum.pop();
+			lb.pop();
 		}
 		else if(e.key.length==1)
 		{
 			bufferStr+=e.key;
 			let currentCol=char2col(e.key);
-			colBuffer.push(currentCol);
-			if(colSum.length == 0) colSum.push(currentCol);
-			else
-			{
-				let prevCol=colSum[bufferStr.length-2];
-				let resultCol=addCol(prevCol,currentCol);
-				if(colSum.length >= blurRadius)
-				{
-					let prevCol2=colSum[bufferStr.length-blurRadius-1];
-					resultCol=subCol(resultCol,prevCol2);
-				}
-				colSum.push(resultCol);
-			}
+			lb.push(currentCol);
 		}
 		buffer.textContent=bufferStr+"_";
 	}
