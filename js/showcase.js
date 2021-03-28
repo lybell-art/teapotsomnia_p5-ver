@@ -225,6 +225,7 @@ function draw()
 	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
 		if(temp_color !== "") dream_color=temp_color;
+		console.log(temp_color);
 	});
 	if(dream_color !== "") teapotColor=dream_color;
 	for (var i = dream_blobs.length -1; i >=0; i--) {
@@ -282,19 +283,18 @@ function draw()
 	dream_blobs.forEach(blob => blob.display());
 	
 	if(frameRate() > 1) t += 60.0/frameRate();
-	console.log(t);
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight, false);
 }
-/*
+
 function mouseDragged(){
 	rotY -= (mouseX - pmouseX) * 0.004;
 	rotX -= (mouseY - pmouseY) * 0.004;
 }
-*/
+
 
 function mouseWheel(event) {
 	let e = event.delta;
