@@ -71,15 +71,13 @@ function changeBGgrad(grad)
 	let str="linear-gradient(";
 	for(var i=0; i<grad.length; i++)
 	{
-		str+=grad[i];
+		str+=rgb2hex(grad[i]);
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
-	body.style.backgroundImage = str;
+	let prefix=["-webkit-","-moz-","-o-","-ms-"];
+	for(var p in prefix) {body.style.backgroundImage = p+str; console.log(p);};
 }
-
-
-
 
 class LinearBlurSystem{
 	constructor(radius)
