@@ -150,8 +150,8 @@ function setup()
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
-	slider1=createSlider(-100, 100, -50);
-	slider2=createSlider(-100, 100, 58);
+	slider1=createSlider(-100, 0, -50);
+	slider2=createSlider(-200, 200, 58);
 	slider3=createSlider(0, 500, 100);
 	slider4=createSlider(-200, 200, 0);
 	slider1.position(10, 10);
@@ -190,12 +190,12 @@ function draw()
 	push();
 	scale(0.4);
 	rotateX(PI);
-	translate(300,5,-6*slider3.value());
+	translate(300,50,-6*slider3.value());
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
 		model(tree);
-		translate(0,50,slider3.value());
+		translate(0,0,slider3.value());
 	}
 	pop();
 	
@@ -203,13 +203,13 @@ function draw()
 	push();
 	rotateX(HALF_PI);
 	rotateZ(-HALF_PI);
-	translate(0,-9,slider4.value());
+	translate(0,-slider4.value(),60);
 	fill(teapotColor);
 	model(teapot);
 	pop();
 	
 	console.log("tree : "+slider3.value());
-	console.log("teapot Z : "+slider4.value());
+	console.log("teapot Y : "+slider4.value());
 }
 
 function windowResized()
