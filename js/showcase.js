@@ -77,7 +77,7 @@ function changeBGgrad(grad)
 	str+=")";
 	console.log(str);
 	let prefix=["-webkit-","-moz-","-o-","-ms-"];
-	for(var p in prefix) {body.style.backgroundImage = p+str; console.log(p);};
+	["-webkit-","-moz-","-o-","-ms-"].forEach(prefix => body.style.backgroundImage = prefix+str);
 }
 
 class LinearBlurSystem{
