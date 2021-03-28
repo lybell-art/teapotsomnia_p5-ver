@@ -246,8 +246,7 @@ function draw()
 	//setting position
 	
 	cameraMove();
-	
-//	camera(transX,transY,(height/2.0) / tan(PI*30.0 / 180.0) / scaleFactor, rotY, rotX, 0);
+	orbitControl(2,2,0);
 	
 	//drawing terrain
 	push();
@@ -292,12 +291,6 @@ function windowResized()
 	resizeCanvas(windowWidth, windowHeight, false);
 }
 
-function mouseDragged(){
-	mainCamera.pan(-(mouseX - pmouseX) * 0.004);
-	mainCamera.tilt(-(mouseY - pmouseY) * 0.004);
-}
-
-
 function mouseWheel(event) {
 	let e = event.delta;
 	mainCamera.move(0,0, e * 0.1);
@@ -305,10 +298,10 @@ function mouseWheel(event) {
 
 function cameraMove()
 {
-	if (keyIsDown(LEFT_ARROW)) mainCamera.move(10, 0, 0);
-	if (keyIsDown(RIGHT_ARROW)) mainCamera.move(-10, 0, 0);
-	if (keyIsDown(UP_ARROW)) mainCamera.move(0, 10, 0);
-	if (keyIsDown(DOWN_ARROW)) mainCamera.move(0, -10, 0);
+	if (keyIsDown(LEFT_ARROW)) mainCamera.move(-10, 0, 0);
+	if (keyIsDown(RIGHT_ARROW)) mainCamera.move(10, 0, 0);
+	if (keyIsDown(UP_ARROW)) mainCamera.move(0, -10, 0);
+	if (keyIsDown(DOWN_ARROW)) mainCamera.move(0, 10, 0);
 }
 
 window.addEventListener("keydown", e => {
