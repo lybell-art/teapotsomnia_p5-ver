@@ -249,7 +249,8 @@ window.addEventListener("keydown", e => {
 });
 
 button.addEventListener('click', event => {
-	camOn=!camOn;
+	isCam=!isCam;
 	if(isCam) button.classList.add('camOn');
 	else button.classList.remove('camOn');
+	console.log(isCam);
 });
