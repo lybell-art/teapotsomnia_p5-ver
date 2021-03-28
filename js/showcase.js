@@ -195,7 +195,7 @@ class mind_ball{
 	{
 		push();
 		fill(this.col.r, this.col.g, this.col.b, this.alpha);
-		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms)*4:0),this.z);
+		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms)*5:0),this.z);
 		sphere(this.size);
 		pop();
 	}
@@ -225,7 +225,6 @@ function draw()
 	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
 		if(temp_color !== "") dream_color=temp_color;
-		console.log(temp_color);
 	});
 	if(dream_color !== "") teapotColor=dream_color;
 	for (var i = dream_blobs.length -1; i >=0; i--) {
