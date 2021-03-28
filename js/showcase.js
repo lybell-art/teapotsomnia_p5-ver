@@ -144,10 +144,16 @@ let lb=new LinearBlurSystem(5);
 let rotX=-0.11, rotY=0.8, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
+let slider1, slider2;
+
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
+	slider1=createSlider(0, 10, 1);
+	slider2=createSlider(0, 10, 1);
+	slider1.position(10, 10);
+	slider2.position(10, 40);
 }
 function draw() 
 {
@@ -166,7 +172,7 @@ function draw()
 	//drawing terrain
 	push();
 	rotateX(PI);
-	scale(1);
+	scale(slider1.value());
 	fill(117,203,255);
 	model(terrain1);
 	translate(0,3,0);
@@ -176,7 +182,7 @@ function draw()
 	
 	//drawing trees
 	push();
-	scale(1.7);
+	scale(slider2.value());
 	rotateX(PI);
 	translate(10,2,-42);
 	fill(65, 166, 159);
