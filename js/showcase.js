@@ -96,7 +96,8 @@ window.addEventListener("keydown", e => {
 			bufferStr="";
 			let colLen=colBuffer.length;
 			let lastCol=colSum[colLen-1];
-			for(var i=blurRadius; i>1; i--)
+			let blurRadius2=Math.min(blurRadius,colLen);
+			for(var i=blurRadius2; i>1; i--)
 			{
 				let prevCol3=colBuffer[colLen-i];
 				colSum.push(subCol(lastCol,prevCol3));
