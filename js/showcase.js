@@ -213,7 +213,7 @@ function draw()
 
 function windowResized()
 {
-	resizeCanvas(windowWdith, windowHeight, false);
+	resizeCanvas(windowWidth, windowHeight, false);
 }
 
 window.onload = function() {
