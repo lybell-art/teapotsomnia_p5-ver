@@ -125,7 +125,7 @@ window.addEventListener("keydown", e => {
 				if(colSum.length >= blurRadius)
 				{
 					let prevCol2=colSum[bufferStr.length-blurRadius-1];
-					resultCol=subCol(currentCol,prevCol2);
+					resultCol=subCol(resultCol,prevCol2);
 				}
 				colSum.push(resultCol);
 			}
