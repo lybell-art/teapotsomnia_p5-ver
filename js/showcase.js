@@ -66,6 +66,7 @@ function rgb2hex(r,g,b)
 }
 function changeBGgrad(grad)
 {
+	if(!grad) return;
 	let body=document.getElementsByTagName("body")[0];
 	let str="linear-gradient(";
 	for(var i=0; i<grad.length; i++)
@@ -74,6 +75,7 @@ function changeBGgrad(grad)
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
+	console.log(str);
 	let prefix=["-webkit-","-moz-","-o-","-ms-"];
 	for(var p in prefix) {body.style.backgroundImage = p+str; console.log(p);};
 }
