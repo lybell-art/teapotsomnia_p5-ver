@@ -79,7 +79,6 @@ class LinearBlurSystem{
 		for(var i=blurRadius2; i>1; i--)
 		{
 			let prevCol3=this.colBuffer[this.length-i];
-			console.log(this.length-i);
 			this.colSum.push(LinearBlurSystem.sub(this.colSum[this.colSum.length-1],prevCol3));
 		}
 		
@@ -207,7 +206,6 @@ window.addEventListener("keydown", e => {
 		{
 			bufferStr="";
 			lb.blur();
-			console.log(lb.grad(3));
 			changeBGgrad(lb.grad(3));
 			lb.clear();
 		}
