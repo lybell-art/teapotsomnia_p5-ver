@@ -159,6 +159,7 @@ function draw()
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	
+	cameraMove();
 	translate(transX,transY,0);
 	rotateX(rotX);
 	rotateY(-rotY);
