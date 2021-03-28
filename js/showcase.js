@@ -247,11 +247,10 @@ window.addEventListener("keydown", e => {
 	}
 });
 
-const button = document.querySelector('#cam_button');
-
-button.addEventListener('click', event => {
+function toggleClick(e)
+{
 	isCam=!isCam;
-	if(isCam) button.classList.add('camOn');
-	else button.classList.remove('camOn');
+	if(isCam) e.classList.add('camOn');
+	else e.classList.remove('camOn');
 	console.log(isCam);
-});
+}
