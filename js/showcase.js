@@ -146,7 +146,7 @@ let rotX, rotY, transX, transY, scaleFactor, time;
 
 function setup() 
 { 
-	createCanvas(windowWidth, windowHeight, P3D); 
+	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
 }
 function draw() 
