@@ -1,5 +1,11 @@
 body{
-  background-image: linear-gradient(to top, #56568F 0%, #a18cd1 100%);
+  background-image: linear-gradient(to top, #f2d6d1 0%, #C5BBF7 100%);
+}
+body.noon{
+  background-image: linear-gradient(to top, #d2ecca 0%, #a5d9f9 100%)
+}
+body.midnight{
+  background-image: linear-gradient(to top, #2d9494 0%, #2E144A 100%)
 }
 
 #type1{
