@@ -205,6 +205,10 @@ function draw()
 	fill(teapotColor);
 	model(teapot);
 	pop();
+	
+	console.log("rotX : "+slider1.value());
+	console.log("rotY : "+slider2.value());
+	console.log("size of trees : "+slider3.value());
 }
 
 window.onload = function() {
