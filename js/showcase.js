@@ -65,6 +65,7 @@ class LinearBlurSystem{
 		this.colBuffer=[];
 		this.colSum=[];
 		this.length=0;
+		this.isEnded=false;
 	}
 	static add(a,b)
 	{
@@ -80,6 +81,11 @@ class LinearBlurSystem{
 	}
 	push(c)
 	{
+		if(this.isEnded)
+		{
+			console.log("No more colors can be added.");
+			return;
+		}
 		this.colBuffer.push(c);
 		if(this.length == 0) this.colSum.push(c);
 		else
@@ -98,17 +104,18 @@ class LinearBlurSystem{
 
 	blur()
 	{
+		if(this.isEnded)
+		{
+			console.log("The blurring calculation is over.");
+			return;
+		}
 		let blurRadius2=Math.min(this.blurRadius,this.length);
-		console.log(this.colBuffer);
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
-		console.log(blurRadius2);
 		for(var i=blurRadius2; i>1; i--)
 		{
 			let prevCol3=this.colBuffer[this.length-i];
 			console.log(this.length-i);
 			this.colSum.push(LinearBlurSystem.sub(this.colSum[this.colSum.length-1],prevCol3));
 		}
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
 		
 		let sumLen=this.colSum.length;
 		for(var i=0; i <sumLen; i++)
@@ -119,12 +126,33 @@ class LinearBlurSystem{
 			else division=sumLen-i;
 			this.colSum[i]=LinearBlurSystem.div(this.colSum[i],division);
 		}
-		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
+//		for(var i=0;i<this.colSum.length;i++) console.log(this.colSum[i]);
+		this.isEnded=true;
 		return this.colSum;
 	}
-	
+	grad(div)
+	{
+		if(!this.isEnded)
+		{
+			console.log("Blurring Calculation is not yet over!");
+			return;
+		}
+		let blurLen=this.colSum.length;
+		if(blurLen == 0)
+		{
+			console.log("Can't return blur gradient!");
+			return;
+		}
+		let res={0.0:this.colSum[0], 1.0:this.colSum[blurLen-1]};	
+		return res;
+	}
 	pop()
 	{
+		if(this.isEnded)
+		{
+			console.log("No more colors can be popped.");
+			return;
+		}
 		this.colBuffer.pop();
 		this.colSum.pop();
 		if(this.length>0) this.length--;
@@ -135,6 +163,7 @@ class LinearBlurSystem{
 		this.colBuffer=[];
 		this.colSum=[];
 		this.length=0;
+		this.isEnded=false;
 	}
 }
 
