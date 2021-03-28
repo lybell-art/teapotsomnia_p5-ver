@@ -144,18 +144,10 @@ let lb=new LinearBlurSystem(5);
 let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
 
-let slider1, slider2, slider3;
-
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
-	slider1=createSlider(-100, 0, -45);
-	slider2=createSlider(-200, 200, 58);
-	slider3=createSlider(0, 500, 230);
-	slider1.position(10, 10);
-	slider2.position(10, 40);
-	slider3.position(10, 70);
 }
 function draw() 
 {
@@ -167,11 +159,9 @@ function draw()
 	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	translate(transX,transY,0);
-	rotX=0.01*slider1.value();
-	rotY=0.01*slider2.value();
 	rotateX(rotX);
 	rotateY(-rotY);
-	scale(1+scaleFactor);
+	scale(1+0.1*scaleFactor);
 	
 	//drawing terrain
 	push();
@@ -188,7 +178,7 @@ function draw()
 	push();
 	scale(0.4);
 	rotateX(PI);
-	translate(300,slider3.value(),-6*230);
+	translate(300,150,-6*230);
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
@@ -205,13 +195,21 @@ function draw()
 	fill(teapotColor);
 	model(teapot);
 	pop();
-	
-	console.log("tree : "+slider3.value());
 }
 
 function windowResized()
 {
 	resizeCanvas(windowWidth, windowHeight, false);
+}
+
+function mouseDragged(){
+	rotY -= (mouseX - pmouseX) * 0.01;
+	rotX -= (mouseY - pmouseY) * 0.01;
+}
+
+function mouseWheel(e) {
+	float e = event.getCount();
+	scaleFactor -= e * 1.002;
 }
 
 window.onload = function() {
