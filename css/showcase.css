@@ -33,6 +33,11 @@ body{
 	cursor:pointer;
 }
 
+#cam_button.camOn{
+	background-color:#0000ff;
+}
+
+
 @media screen and (max-width: 768px) {
 	#type1{
 		font-size:32px;
