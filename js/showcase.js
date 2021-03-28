@@ -257,7 +257,6 @@ function draw()
 	
 	cameraMove();
 	orbitControl(2,2,0);
-	cameraPos=extractCameraPos(mainCamera);
 	
 	//drawing terrain
 	push();
@@ -307,14 +306,22 @@ function windowResized()
 function mouseWheel(event) {
 	let e = event.delta;
 	mainCamera.move(0,0, e * 0.1);
+	cameraPos=extractCameraPos(mainCamera);
+}
+
+function mouseDragged()
+{
+	cameraPos=extractCameraPos(mainCamera);
 }
 
 function cameraMove()
 {
-	if (keyIsDown(LEFT_ARROW)) mainCamera.move(-10, 0, 0);
-	if (keyIsDown(RIGHT_ARROW)) mainCamera.move(10, 0, 0);
-	if (keyIsDown(UP_ARROW)) mainCamera.move(0, -10, 0);
-	if (keyIsDown(DOWN_ARROW)) mainCamera.move(0, 10, 0);
+	var isChanged=false;
+	if (keyIsDown(LEFT_ARROW)) {mainCamera.move(-10, 0, 0); isChanged=true;}
+	if (keyIsDown(RIGHT_ARROW)) {mainCamera.move(10, 0, 0); isChanged=true;}
+	if (keyIsDown(UP_ARROW)) {mainCamera.move(0, -10, 0); isChanged=true;}
+	if (keyIsDown(DOWN_ARROW)) {mainCamera.move(0, 10, 0); isChanged=true;}
+	if(isChanged) cameraPos=extractCameraPos(mainCamera);
 }
 
 window.addEventListener("keydown", e => {
