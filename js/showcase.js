@@ -220,6 +220,8 @@ function setup()
 	slider2.position(10, 40);
 	slider3=createSlider(-500, 500, 0);
 	slider3.position(10, 70);
+	rotX=-1.4;
+	rotY=0;
 }
 function draw() 
 {
@@ -229,6 +231,9 @@ function draw()
 	{
 		dream_blobs.push(new mind_ball());
 		time -= 360;
+		console.log("x : "+slider1.value());
+		console.log("y : "+slider2.value());
+		console.log("z : "+slider3.value());
 	}/*
 	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
