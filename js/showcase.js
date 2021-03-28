@@ -152,7 +152,7 @@ function setup()
 	noStroke();
 	slider1=createSlider(-100, 100, -50);
 	slider2=createSlider(-100, 100, 40);
-	slider3=createSlider(0, 100, 50);
+	slider3=createSlider(0, 200, 100);
 	slider1.position(10, 10);
 	slider2.position(10, 40);
 	slider3.position(10, 70);
@@ -186,9 +186,9 @@ function draw()
 	
 	//drawing trees
 	push();
-	scale(0.8);
+	scale(0.7);
 	rotateX(PI);
-	translate(140,5,-6*slider3.value());
+	translate(180,5,-6*slider3.value());
 	fill(65, 166, 159);
 	for(var i=0; i<13; i++)
 	{
