@@ -138,6 +138,69 @@ class LinearBlurSystem{
 	}
 }
 
+class mind_ball{
+	constructor(c)
+	{
+		this.x=8; this.y=-7; this.z=70; this.size=1;
+		this.phase=1;
+		this.alpha=256;
+		this.wait_time=-1;
+		this.ms=0;
+		this.col="#ffffff";
+		if(!c) rgb2hex(random(192,256),random(192,256),random(192,256));
+		else this.col=rgb2hex(c);
+	}
+	movement()
+	{
+		let absorbed=false;
+		let amplify=60.0/frameRate;
+		this.ms+=0.04*amplify;
+		switch(phase)
+		{
+			case 1:
+				this.size=1; this.z-=0.1*amplify;
+				if(this.z <= 0)
+				{
+				  this.z=0; this.phase = 2;
+				}
+				break;
+			case 2:
+				this.size=1; this.x-=0.1*amplify;
+				if(x <= -2)
+				{
+				  this.wait_time=0; absorbed=true; this.phase = 3;
+				}
+				break;
+			case 3:
+				this.size=0; this.wait_time+=amplify;
+				if(this.wait_time >= 25)
+				{
+				  this.x=-9.1; this.y=-17; this.z=-16; this.size=0.3; this.phase = 4;
+				}
+				break;
+			case 4:
+				this.size+=0.01*amplify; this.y-=0.1*amplify;
+				if(this.size >= 3.72) this.alpha -= 2;
+				if(this.size >= 5) this.phase = 5;
+				break;
+		}
+		if(absorbed) return this.col;
+		else return 0;
+	}
+	finished()
+	{
+		return this.phase == 5;
+	}
+	display()
+	{
+		push();
+		fill(this.col, this.alpha);
+		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
+		sphere(this.size);
+		pop();
+	}
+}
+
 
 let lb=new LinearBlurSystem(5);
 
@@ -156,7 +219,7 @@ function draw()
 	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
 	lights();
 	ambientLight(34,5,15);
-	directionalLight(135,135,135, 1, 1, -1);
+	directionalLight(135,135,135, -1, 1, -1);
 	//setting position
 	
 	cameraMove();
