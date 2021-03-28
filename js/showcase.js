@@ -143,11 +143,14 @@ let lb=new LinearBlurSystem(5);
 
 let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
 let teapotColor=rgb2hex(255,244,231);
+let cam;
 
 function setup() 
 { 
 	createCanvas(windowWidth, windowHeight, WEBGL); 
 	noStroke();
+	cam = createCapture(VIDEO);
+	cam.hide();
 }
 function draw() 
 {
@@ -197,6 +200,12 @@ function draw()
 	fill(teapotColor);
 	model(teapot);
 	pop();
+	
+	if(isCam)
+	{
+		image(cam,0,0,0,0);
+		blend(cam, 0, 0, width, height, 0, 0, width, height, SOFT_LIGHT);
+	}
 }
 
 function windowResized()
@@ -218,12 +227,8 @@ function cameraMove()
 {
 	if (keyIsDown(LEFT_ARROW)) transX += 10;
 	if (keyIsDown(RIGHT_ARROW)) transX -= 10;
-	if (keyIsDown(UP_ARROW)) transY -= 10;
-	if (keyIsDown(DOWN_ARROW)) transY += 10;
-}
-
-window.onload = function() {
-	var context = new AudioContext();
+	if (keyIsDown(UP_ARROW)) transY += 10;
+	if (keyIsDown(DOWN_ARROW)) transY -= 10;
 }
 
 window.addEventListener("keydown", e => {
