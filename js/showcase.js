@@ -88,7 +88,7 @@ class LinearBlurSystem{
 			let resultCol=LinearBlurSystem.add(prevCol,c);
 			if(this.length >= this.blurRadius)
 			{
-				let prevCol2=this.colSum[this.length-this.blurRadius];
+				let prevCol2=this.colBuffer[this.length-this.blurRadius];
 				resultCol=LinearBlurSystem.sub(resultCol,prevCol2);
 			}
 			this.colSum.push(resultCol);
