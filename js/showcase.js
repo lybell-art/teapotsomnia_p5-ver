@@ -143,6 +143,7 @@ class LinearBlurSystem{
 let lb=new LinearBlurSystem(5);
 
 let rotX, rotY, transX, transY, scaleFactor, time;
+let teapotColor=rgb2hex(255,244,231);
 
 function setup() 
 { 
