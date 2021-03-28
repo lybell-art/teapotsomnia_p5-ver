@@ -204,6 +204,9 @@ function draw()
 	pop();
 }
 
+window.onload = function() {
+	var context = new AudioContext();
+}
 
 window.addEventListener("keydown", e => {
 	const buffer = document.getElementById("type_buffer");
