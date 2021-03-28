@@ -195,7 +195,7 @@ class mind_ball{
 	{
 		push();
 		fill(this.col.r, this.col.g, this.col.b, this.alpha);
-		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms):0),this.z);
+		translate(this.x,this.y+(this.phase<3?Math.sin(this.ms)*4:0),this.z);
 		sphere(this.size);
 		pop();
 	}
@@ -204,7 +204,7 @@ class mind_ball{
 
 let lb=new LinearBlurSystem(5);
 
-let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, time=0;
+let rotX=-0.45, rotY=0.58, transX=0, transY=0, scaleFactor=0, t=0;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
 
@@ -217,10 +217,10 @@ function draw()
 {
 	let dream_color="";
 	let temp_color;
-	if(time >= 300)
+	if(t >= 300)
 	{
 		dream_blobs.push(new mind_ball());
-		time -= 360;
+		t -= 360;
 	}
 	dream_blobs.forEach(blob => {
 		temp_color=blob.movement();
@@ -281,7 +281,8 @@ function draw()
 	
 	dream_blobs.forEach(blob => blob.display());
 	
-	time+=60.0/frameRate();
+	time += 60.0/frameRate();
+	console.log(frameRate());
 }
 
 function windowResized()
