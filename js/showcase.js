@@ -220,7 +220,6 @@ let t=0, cameraPos;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
 let mainCamera;
-let previousTouch={x:windowWidth/2, y:windowHeight/2}
 
 function setup() 
 { 
