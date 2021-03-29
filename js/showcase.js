@@ -340,8 +340,8 @@ function cameraMove() //camera moving with arrow keys
 function touch_rotate_cam() //camera rotate on touch device
 {
 	const scaleFactor = height < width ? height : width;
-	const buffer = document.getElementById("type_buffer");
-	buffer.textContent=pTouchScale;
+//	const buffer = document.getElementById("type_buffer");
+//	buffer.textContent=pTouchScale;
 	let rotX, rotY;
 	if(touches.length === 1)
 	{
