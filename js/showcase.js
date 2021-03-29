@@ -341,11 +341,10 @@ function touch_rotate_cam() //camera rotate on touch device
 {
 	const scaleFactor = height < width ? height : width;
 	const buffer = document.getElementById("type_buffer");
-	buffer.textContent=touches.length;
+	buffer.textContent=pTouchScale;
 	let rotX, rotY;
 	if(touches.length === 1)
 	{
-		buffer.textContent="dimi";
 		rotX = -2 * (mouseX - pmouseX) / scaleFactor;
 		rotY =  2 * (mouseY - pmouseY) / scaleFactor;
 		mainCamera._orbit(rotX, rotY, 0);
