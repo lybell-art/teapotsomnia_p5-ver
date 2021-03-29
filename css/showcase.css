@@ -78,16 +78,13 @@ body.midnight{
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
 	#type1{
 		font-size:32px;
 	}
 	#type_buffer{
 		font-size:48px;
 	}
-}
-
-@media screen and (max-width: 1024px) {
 	#button_wrap{
 		width:120px;
 		height:250px;
