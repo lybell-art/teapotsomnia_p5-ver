@@ -1,6 +1,7 @@
 let teapot, tree, terrain1, terrain2; //3D objects
 const audio = new Audio("assets/The Tides Dream Escape.mp3"); //background music
 let isSilent=true;
+const isMidnight=timeDetect() == _NIGHT;
 
 function preload() { //loading 3D objects
 	teapot = loadModel('assets/teapot.obj', true);
@@ -17,9 +18,10 @@ function changeBGgrad(grad) //background gradient change
 	if(!grad) return;
 	let body=document.getElementsByTagName("body")[0];
 	let str="linear-gradient(";
+	let mult=isMidnight ? 0.6 : 1;
 	for(var i=0; i<grad.length; i++)
 	{
-		str+=rgb2hex(grad[i]);
+		str+=rgb2hex(grad[i] * mult);
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
@@ -222,7 +224,6 @@ let teapotColor=rgb2hex(255,244,231); //initial color
 let dream_blobs=[]; //dream-blobs
 let mainCamera; //camera object
 let pTouchScale=1;
-const isMidnight=timeDetect() == _NIGHT;
 
 function setup() 
 { 
@@ -273,7 +274,7 @@ function draw()
 	else
 	{
 		ambientLight(34,5,15);
-		directionalLight(135,135,135, -1, 1, -1);
+		directionalLight(150,150,150, -1, 1, -1);
 	}
 	
 	//setting position
