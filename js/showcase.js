@@ -268,7 +268,7 @@ function draw()
 	if(isMidnight)
 	{
 		ambientLight(15,5,44);
-		directionalLight(40,40,150, -1, 1, -1);
+		directionalLight(70,40,150, -1, 1, -1);
 	}
 	else
 	{
