@@ -56,3 +56,12 @@ function rgb2hex(r,g,b)
 	}
 	return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
+
+function timeDetect()
+{
+	let today = new Date();   
+	let hours = today.getHours();
+	if(between(hours,10,14)) return "noon";
+	else if(between(hours,0,6) || between(hours,21,24)) return "night";
+	else return "day";
+}
