@@ -78,12 +78,29 @@ body.midnight{
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
 	#type1{
 		font-size:32px;
 	}
 	#type_buffer{
 		font-size:48px;
+	}
+	#button_wrap{
+		width:100px;
+		height:200px;
+	}
+	.buttons{
+		width:80px;
+		height:80px;
+	}
+}
+
+@media screen and (orientation:portrait) and (max-width: 1024px) {
+	#type1{
+		font-size:48px;
+	}
+	#type_buffer{
+		font-size:64px;
 	}
 	#button_wrap{
 		width:120px;
