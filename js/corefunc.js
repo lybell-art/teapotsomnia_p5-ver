@@ -36,14 +36,25 @@ function HSBtoRGB(h, s, v) {
 	};
 }
 
-function char2col(a)
+function char2col(a, isNight)
 {
+	if(arguments.length == 1) isNight=false;
 	let a_=a.charCodeAt(0);
 	let res;
-	if(between(a_,65,90)) res=HSBtoRGB(map(a_,65,91,0,360),45,80);
-	else if(between(a_,97,122)) res=HSBtoRGB(map(a_,97,123,0,360),20,90);
-	else if(between(a_,48,57)) res=HSBtoRGB(0,0,map(a_,48,58,60,90));
-	else res=HSBtoRGB(340,5,96);
+	if(!isNight)
+	{
+		if(between(a_,65,90)) res=HSBtoRGB(map(a_,65,91,0,360),45,80);
+		else if(between(a_,97,122)) res=HSBtoRGB(map(a_,97,123,0,360),20,90);
+		else if(between(a_,48,57)) res=HSBtoRGB(0,0,map(a_,48,58,60,90));
+		else res=HSBtoRGB(340,5,96);
+	}
+	else
+	{
+		if(between(a_,65,90)) res=HSBtoRGB(map(a_,65,91,0,360),85,60);
+		else if(between(a_,97,122)) res=HSBtoRGB(map(a_,97,123,0,360),50,80);
+		else if(between(a_,48,57)) res=HSBtoRGB(0,0,map(a_,48,58,30,60));
+		else res=HSBtoRGB(290,10,96);
+	}
 	return res;
 }
 
