@@ -30,16 +30,17 @@ body.midnight{
 
 #button_wrap{
 	position: fixed;
-	width:250px;
-	height:120px;
+	width:205px;
+	height:100px;
 	top:25px;
 	right:25px;
 	z-index:10;
 }
 
 .buttons{
-	width: 100px;
-	height:100px;
+	width: 80px;
+	height:80px;
+	background-size: contain;
 	margin:10px;
 	cursor:pointer;
 	display:inline-block;
@@ -83,6 +84,10 @@ body.midnight{
 	}
 	#type_buffer{
 		font-size:48px;
+	}
+	.buttons{
+		width:100px;
+		height:100px;
 	}
 	#button_wrap{
 		width:120px;
