@@ -357,7 +357,7 @@ function touch_zoom(event) //camera zoom on touch device
 		return;
 	}
 	let delta=event.scale - pTouchScale;
-	mainCamera.move(0,0, delta);
+	mainCamera.move(0,0, delta*20);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
 	const buffer = document.getElementById("type_buffer");
