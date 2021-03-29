@@ -95,7 +95,7 @@ body.midnight{
 	}
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
 	.buttons{
 		width:20px;
 		height:20px;
