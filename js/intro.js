@@ -30,7 +30,6 @@ let Showcase_Button=function(d)
 	};
 	d.windowResized=function()
 	{
-		console.log(d.width);
 		d.resizeCanvas(vmin(30),vmin(20), false);
 	}
 };
