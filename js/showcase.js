@@ -357,10 +357,10 @@ function touch_zoom(event) //camera zoom on touch device
 		return;
 	}
 	let delta=event.scale - pTouchScale;
-	mainCamera.move(0,0, delta * 0.1);
+	mainCamera.move(0,0, delta);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
-	circle(10 * delta);
+	console.log(delta);
 }
 
 //start bgm
