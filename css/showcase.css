@@ -57,7 +57,7 @@ body.midnight{
 	background-image:url("../assets/mute.png");
 }
 
-#cam_button.muteOn{
+#mute_button.muteOn{
 	background-image:url("../assets/unmute.png");
 }
 
