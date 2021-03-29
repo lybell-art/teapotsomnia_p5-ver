@@ -307,9 +307,6 @@ function draw()
 	dream_blobs.forEach(blob => blob.display());
 	
 	if(frameRate() > 1) t += 60.0/frameRate();
-	
-	const vvv = document.getElementById("type_buffer");
-		vvv.textContent=window.innerWidth+"_";
 }
 
 function windowResized()
