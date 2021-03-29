@@ -19,10 +19,10 @@ function changeBGgrad(grad) //background gradient change
 	if(!grad) return;
 	let body=document.getElementsByTagName("body")[0];
 	let str="linear-gradient(";
-	let mult=isMidnight ? 0.6 : 1;
+	let mult=isMidnight ? 1.5 : 1;
 	for(var i=0; i<grad.length; i++)
 	{
-		str+=rgb2hex(grad[i] * mult);
+		str+=rgb2hex(LinearBlurSystem.div(grad[i],mult));
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
