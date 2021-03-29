@@ -222,6 +222,7 @@ let teapotColor=rgb2hex(255,244,231); //initial color
 let dream_blobs=[]; //dream-blobs
 let mainCamera; //camera object
 let pTouchScale=1;
+const isMidnight=timeDetect() == _NIGHT;
 
 function setup() 
 { 
@@ -264,8 +265,16 @@ function draw()
 	clear();
 	//setting light
 	lights();
-	ambientLight(34,5,15);
-	directionalLight(135,135,135, -1, 1, -1);
+	if(isMidnight)
+	{
+		ambientLight(15,5,44);
+		directionalLight(40,40,150, -1, 1, -1);
+	}
+	else
+	{
+		ambientLight(34,5,15);
+		directionalLight(135,135,135, -1, 1, -1);
+	}
 	
 	//setting position
 	cameraMove();
