@@ -9,7 +9,7 @@ function preload() { //loading 3D objects
 	terrain2 = loadModel("assets/terrain2.obj", true);
 }
 
-let bufferStr=window.innerWidth;
+let bufferStr="";
 let isCam=false, isMute=false;
 
 function changeBGgrad(grad) //background gradient change
@@ -307,6 +307,9 @@ function draw()
 	dream_blobs.forEach(blob => blob.display());
 	
 	if(frameRate() > 1) t += 60.0/frameRate();
+	
+	const vvv = document.getElementById("type_buffer");
+		vvv.textContent=window.innerWidth+"_";
 }
 
 function windowResized()
