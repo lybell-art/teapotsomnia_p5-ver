@@ -2,7 +2,7 @@ let teapot, tree, terrain1, terrain2; //3D objects
 const audio = new Audio("assets/The Tides Dream Escape.mp3"); //background music
 let isSilent=true;
 
-function preload() {
+function preload() { //loading 3D objects
 	teapot = loadModel('assets/teapot.obj', true);
 	tree = loadModel("assets/simpletree.obj", true);
 	terrain1 = loadModel("assets/terrain.obj", true);
@@ -12,7 +12,7 @@ function preload() {
 let bufferStr="";
 let isCam=false;
 
-function changeBGgrad(grad)
+function changeBGgrad(grad) //background gradient change
 {
 	if(!grad) return;
 	let body=document.getElementsByTagName("body")[0];
@@ -35,19 +35,19 @@ class LinearBlurSystem{
 		this.length=0;
 		this.isEnded=false;
 	}
-	static add(a,b)
+	static add(a,b) //add color vector
 	{
 		return {r: a.r+b.r , g:a.g+b.g, b:a.b+b.b};
 	}
-	static sub(a,b)
+	static sub(a,b) //subtract color vector
 	{
 		return {r: a.r-b.r , g:a.g-b.g, b:a.b-b.b};
 	}
-	static div(a,scalar)
+	static div(a,scalar) //divide color vector with scalar
 	{
 		return {r: Math.round(a.r/scalar) , g:Math.round(a.g/scalar), b:Math.round(a.b/scalar)};
 	}
-	push(c)
+	push(c) //pushing color in buffer
 	{
 		if(this.isEnded)
 		{
@@ -70,7 +70,7 @@ class LinearBlurSystem{
 		this.length++;
 	}
 
-	blur()
+	blur() //calculate blurring color
 	{
 		if(this.isEnded)
 		{
@@ -97,7 +97,7 @@ class LinearBlurSystem{
 		this.isEnded=true;
 		return this.colSum;
 	}
-	grad(l)
+	grad(l) //return gradient
 	{
 		if(!this.isEnded)
 		{
@@ -119,7 +119,7 @@ class LinearBlurSystem{
 		res.push(this.colSum[blurLen]);
 		return res;
 	}
-	pop()
+	pop() //ejecting color in buffer
 	{
 		if(this.isEnded)
 		{
@@ -131,7 +131,7 @@ class LinearBlurSystem{
 		if(this.length>0) this.length--;
 	}
 	
-	clear()
+	clear() //clear buffer
 	{
 		this.colBuffer=[];
 		this.colSum=[];
@@ -140,6 +140,7 @@ class LinearBlurSystem{
 	}
 }
 
+//dream-blobs object
 class mind_ball{
 	constructor(c)
 	{
@@ -203,7 +204,7 @@ class mind_ball{
 	}
 }
 
-function extractCameraPos(cam)
+function extractCameraPos(cam) //for screen size consistency
 {
 	if(cam)
 	{
@@ -213,27 +214,36 @@ function extractCameraPos(cam)
 }
 
 
-let lb=new LinearBlurSystem(5);
+let lb=new LinearBlurSystem(5); //linear blur system. for changing background gradation
 
 let masterCanvas;
 let t=0, cameraPos;
-let teapotColor=rgb2hex(255,244,231);
-let dream_blobs=[];
-let mainCamera;
+let teapotColor=rgb2hex(255,244,231); //initial color
+let dream_blobs=[]; //dream-blobs
+let mainCamera; //camera object
+let pTouchScale=1;
 
 function setup() 
 { 
 	masterCanvas = createCanvas(windowWidth, windowHeight, WEBGL);
 	noStroke();
+	//set initial camera position
 	mainCamera = createCamera();
 	setCamera(mainCamera);
 	mainCamera.setPosition(330,-480,580);
 	mainCamera.lookAt(0,-50,0);
 	cameraPos={eyeX:330, eyeY:-480, eyeZ:550, centerX:0, centerY:-50, centerZ:0};
+	
+	//enable touch move
 	masterCanvas.touchMoved(touch_rotate_cam);
+	let hammer = new Hammer(document.body, {preventDefault: true});
+	hammer.get('pinch').set({ enable: true });
+	hammer.on("pinch pinchend pinchcancil", touch_zoom);
+	
 }
 function draw() 
 {
+	//operate dream-bobs
 	let dream_color="";
 	let temp_color;
 	if(t >= 300)
@@ -252,15 +262,14 @@ function draw()
 	}
 	
 	clear();
-	//setting camera and light
-//	camera(0,0, (height/2.0) / tan(PI*30.0 / 180.0),0,-100,0,0,1,0);
+	//setting light
 	lights();
 	ambientLight(34,5,15);
 	directionalLight(135,135,135, -1, 1, -1);
-	//setting position
 	
+	//setting position
 	cameraMove();
-	orbitControl(2,2,0);
+	orbitControl(2,2,0); //camera moving with mouse
 	
 	//drawing terrain
 	push();
@@ -307,18 +316,18 @@ function windowResized()
 	mainCamera.lookAt(cameraPos.centerX,cameraPos.centerY,cameraPos.centerZ);
 }
 
-function mouseWheel(event) {
+function mouseWheel(event) { //zoom
 	let e = event.delta;
 	mainCamera.move(0,0, e * 0.1);
-	cameraPos=extractCameraPos(mainCamera);
+	cameraPos=extractCameraPos(mainCamera); //for screen size consistency
 }
 
 function mouseDragged()
 {
-	cameraPos=extractCameraPos(mainCamera);
+	cameraPos=extractCameraPos(mainCamera); //for screen size consistency
 }
 
-function cameraMove()
+function cameraMove() //camera moving with arrow keys
 {
 	var isChanged=false;
 	if (keyIsDown(LEFT_ARROW)) {mainCamera.move(-10, 0, 0); isChanged=true;}
@@ -328,7 +337,7 @@ function cameraMove()
 	if(isChanged) cameraPos=extractCameraPos(mainCamera);
 }
 
-function touch_rotate_cam()
+function touch_rotate_cam() //camera rotate on touch device
 {
 	const scaleFactor = height < width ? height : width;
 	let rotX, rotY;
@@ -340,6 +349,31 @@ function touch_rotate_cam()
 	}
 }
 
+function touch_zoom(event) //camera zoom on touch device
+{
+	if(event.type == "pinchend" || event.type == "pinchcancil")
+	{
+		pTouchScale=1;
+		return;
+	}
+	let delta=event.scale - pTouchScale;
+	mainCamera.move(0,0, delta * 0.1);
+	cameraPos=extractCameraPos(mainCamera);
+	pTouchScale = event.scale;
+}
+
+//start bgm
+function startAudio(e)
+{
+	if(isSilent)
+	{
+		audio.loop=true;
+		audio.play();
+		isSilent=false;
+	}
+}
+
+//input keys
 window.addEventListener("keydown", e => {
 	const buffer = document.getElementById("type_buffer");
 	if (buffer)
@@ -356,7 +390,7 @@ window.addEventListener("keydown", e => {
 			bufferStr=bufferStr.slice(0,-1);
 			lb.pop();
 		}
-		else if(e.key.length==1)
+		else if(e.key.length==1) //any keys
 		{
 			bufferStr+=e.key;
 			let currentCol=char2col(e.key);
@@ -366,17 +400,12 @@ window.addEventListener("keydown", e => {
 		}
 		buffer.textContent=bufferStr+"_";
 	}
+	startAudio(e); //when player type any keys, bgm is started.
 });
 
-window.addEventListener("click", e => {
-	if(isSilent)
-	{
-		audio.loop=true;
-		audio.play();
-		isSilent=false;
-	}
-});
+window.addEventListener("click", startAudio); //when player click the screen, bgm is started.
 
+//cam button click function
 function toggleClick(e)
 {
 	isCam=!isCam;
