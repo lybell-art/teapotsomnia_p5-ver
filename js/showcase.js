@@ -269,7 +269,7 @@ function draw()
 	
 	//setting position
 	cameraMove();
-	orbitControl(2,2,0); //camera moving with mouse
+	if(pTouchScale === 1) orbitControl(2,2,0); //camera moving with mouse
 	
 	//drawing terrain
 	push();
@@ -361,7 +361,7 @@ function touch_zoom(event) //camera zoom on touch device
 	}
 	const scaleFactor = height < width ? height : width;
 	let delta=event.scale - pTouchScale;
-	mainCamera.move(0,0, scaleFactor * delta);
+	mainCamera.move(0,0, -scaleFactor * delta);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
 	
