@@ -75,6 +75,6 @@ function timeDetect()
 	let today = new Date();   
 	let hours = today.getHours();
 	if(between(hours,10,14)) return _NOON;
-	else if(between(hours,0,6) || between(hours,15,24)) return _NIGHT;
+	else if(between(hours,0,6) || between(hours,21,24)) return _NIGHT;
 	else return _DAY;
 }
