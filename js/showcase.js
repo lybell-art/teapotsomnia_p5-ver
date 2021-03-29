@@ -15,6 +15,7 @@ let isCam=false, isMute=false;
 
 function changeBGgrad(grad) //background gradient change
 {
+	console.log(grad);
 	if(!grad) return;
 	let body=document.getElementsByTagName("body")[0];
 	let str="linear-gradient(";
@@ -25,6 +26,7 @@ function changeBGgrad(grad) //background gradient change
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
+	console.log("str");
 	["-webkit-","-moz-","-o-","-ms-"].forEach(prefix => body.style.backgroundImage = prefix+str);
 }
 
