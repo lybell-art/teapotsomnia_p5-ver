@@ -28,19 +28,36 @@ body.midnight{
 }
 
 
-#cam_button{
+#buttonWrap{
 	position: fixed;
-	width: 80px;
-	height:80px;
-	right:25px;
+	width:240px;
+	height:120px;
 	top:25px;
-	background-image:url("../assets/camera_ico.png");
-	z-index: 10;
+	right:25px;
+	z-index:10;
+}
+
+.buttons{
+	width: 100px;
+	height:100px;
+	margin:10px;
 	cursor:pointer;
+}
+
+#cam_button{
+	background-image:url("../assets/camera_ico.png");
 }
 
 #cam_button.camOn{
 	background-image:url("../assets/camera_off_ico.png");
+}
+
+#mute_button{
+	background-image:url("../assets/mute.png");
+}
+
+#cam_button.muteOn{
+	background-image:url("../assets/unmute.png");
 }
 
 #cam_overlay{
@@ -65,5 +82,9 @@ body.midnight{
 	}
 	#type_buffer{
 		font-size:48px;
+	}
+	#buttonWrap{
+		width:120px;
+		height:240px;
 	}
 }
