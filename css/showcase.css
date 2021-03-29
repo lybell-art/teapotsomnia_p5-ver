@@ -94,3 +94,10 @@ body.midnight{
 		height:250px;
 	}
 }
+
+@media screen and (max-width: 1024px) {
+	.buttons{
+		width:20px;
+		height:20px;
+	}
+}
