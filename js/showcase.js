@@ -9,7 +9,7 @@ function preload() { //loading 3D objects
 	terrain2 = loadModel("assets/terrain2.obj", true);
 }
 
-let bufferStr="";
+let bufferStr=window.innerWidth;
 let isCam=false, isMute=false;
 
 function changeBGgrad(grad) //background gradient change
