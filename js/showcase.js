@@ -360,6 +360,7 @@ function touch_zoom(event) //camera zoom on touch device
 	mainCamera.move(0,0, delta * 0.1);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
+	circle(10 * delta);
 }
 
 //start bgm
