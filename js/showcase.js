@@ -340,6 +340,8 @@ function cameraMove() //camera moving with arrow keys
 function touch_rotate_cam() //camera rotate on touch device
 {
 	const scaleFactor = height < width ? height : width;
+	const buffer = document.getElementById("type_buffer");
+	buffer.textContent=delta;
 	let rotX, rotY;
 	if(touches.length == 1)
 	{
@@ -347,6 +349,8 @@ function touch_rotate_cam() //camera rotate on touch device
 		rotY =  2 * (mouseY - pmouseY) / scaleFactor;
 		mainCamera._orbit(rotX, rotY, 0);
 	}
+	const buffer = document.getElementById("type_buffer");
+	buffer.textContent=touches.length;
 }
 
 function touch_zoom(event) //camera zoom on touch device
@@ -357,11 +361,10 @@ function touch_zoom(event) //camera zoom on touch device
 		return;
 	}
 	let delta=event.scale - pTouchScale;
-	mainCamera.move(0,0, delta*20);
+	mainCamera.move(0,0, 20);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
-	const buffer = document.getElementById("type_buffer");
-	buffer.textContent=delta;
+	
 }
 
 //start bgm
