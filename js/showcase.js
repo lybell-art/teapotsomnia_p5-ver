@@ -360,7 +360,8 @@ function touch_zoom(event) //camera zoom on touch device
 	mainCamera.move(0,0, delta);
 	cameraPos=extractCameraPos(mainCamera);
 	pTouchScale = event.scale;
-	console.log(delta);
+	const buffer = document.getElementById("type_buffer");
+	buffer.textContent=delta;
 }
 
 //start bgm
