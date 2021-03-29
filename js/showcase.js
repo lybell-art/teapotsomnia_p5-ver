@@ -1,4 +1,6 @@
 let teapot, tree, terrain1, terrain2; //3D objects
+const audio = new Audio("assets/The Tides Dream Escape.mp3"); //background music
+let isSilent=true;
 
 function preload() {
 	teapot = loadModel('assets/teapot.obj', true);
@@ -349,6 +351,15 @@ window.addEventListener("keydown", e => {
 			t=0;
 		}
 		buffer.textContent=bufferStr+"_";
+	}
+});
+
+window.addEventListener("click", e => {
+	if(isSilent)
+	{
+		audio.loop=true;
+		audio.play();
+		isSilent=false;
 	}
 });
 
