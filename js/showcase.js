@@ -26,7 +26,7 @@ function changeBGgrad(grad) //background gradient change
 		if(i < grad.length-1) str+=",";
 	}
 	str+=")";
-	console.log("str");
+	console.log(str);
 	["-webkit-","-moz-","-o-","-ms-"].forEach(prefix => body.style.backgroundImage = prefix+str);
 }
 
