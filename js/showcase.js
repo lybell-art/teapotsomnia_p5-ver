@@ -215,20 +215,23 @@ function extractCameraPos(cam)
 
 let lb=new LinearBlurSystem(5);
 
+let masterCanvas;
 let t=0, cameraPos;
 let teapotColor=rgb2hex(255,244,231);
 let dream_blobs=[];
 let mainCamera;
+let previousTouch={x:windowWidth/2, y:windowHeight/2}
 
 function setup() 
 { 
-	createCanvas(windowWidth, windowHeight, WEBGL);
+	masterCanvas = createCanvas(windowWidth, windowHeight, WEBGL);
 	noStroke();
 	mainCamera = createCamera();
 	setCamera(mainCamera);
 	mainCamera.setPosition(330,-480,580);
 	mainCamera.lookAt(0,-50,0);
 	cameraPos={eyeX:330, eyeY:-480, eyeZ:550, centerX:0, centerY:-50, centerZ:0};
+	masterCanvas.touchMoved(touch_rotate_cam);
 }
 function draw() 
 {
@@ -324,6 +327,18 @@ function cameraMove()
 	if (keyIsDown(UP_ARROW)) {mainCamera.move(0, -10, 0); isChanged=true;}
 	if (keyIsDown(DOWN_ARROW)) {mainCamera.move(0, 10, 0); isChanged=true;}
 	if(isChanged) cameraPos=extractCameraPos(mainCamera);
+}
+
+function touch_rotate_cam()
+{
+	const scaleFactor = height < width ? height : width;
+	let rotX, rotY;
+	if(touches.length == 1)
+	{
+		rotX = -2 * (mouseX - pmouseX) / scaleFactor;
+		rotY =  2 * (mouseY - pmouseY) / scaleFactor;
+		mainCamera._orbit(rotX, rotY, 0);
+	}
 }
 
 window.addEventListener("keydown", e => {
