@@ -77,6 +77,22 @@ body.midnight{
 	object-fit: cover;
 }
 
+@media screen and (orientation:portrait) and (max-width: 1024px) {
+	#type1{
+		font-size:48px;
+	}
+	#type_buffer{
+		font-size:64px;
+	}
+	#button_wrap{
+		width:120px;
+		height:250px;
+	}
+	.buttons{
+		width:100px;
+		height:100px;
+	}
+}
 
 @media screen and (max-width: 768px) {
 	#type1{
@@ -92,22 +108,5 @@ body.midnight{
 	.buttons{
 		width:80px;
 		height:80px;
-	}
-}
-
-@media screen and (orientation:portrait) and (max-width: 1024px) {
-	#type1{
-		font-size:48px;
-	}
-	#type_buffer{
-		font-size:64px;
-	}
-	#button_wrap{
-		width:120px;
-		height:250px;
-	}
-	.buttons{
-		width:100px;
-		height:100px;
 	}
 }
