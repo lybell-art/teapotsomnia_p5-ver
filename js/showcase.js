@@ -10,7 +10,7 @@ function preload() { //loading 3D objects
 }
 
 let bufferStr="";
-let isCam=false;
+let isCam=false, isMute=false;
 
 function changeBGgrad(grad) //background gradient change
 {
@@ -410,7 +410,7 @@ window.addEventListener("keydown", e => {
 window.addEventListener("click", startAudio); //when player click the screen, bgm is started.
 
 //cam button click function
-function toggleClick(e)
+function toggleCam(e)
 {
 	isCam=!isCam;
 	const camLayer=document.getElementById("cam_overlay");
@@ -423,5 +423,22 @@ function toggleClick(e)
 	{
 		e.classList.remove('camOn');
 		camLayer.style.visibility="hidden";
+	}
+}
+
+//mute button click function
+function toggleMute(e)
+{
+	isMute=!isMute;
+	const camLayer=document.getElementById("cam_overlay");
+	if(isMute)
+	{
+		e.classList.add('muteOn');
+		audio.pause();
+	}
+	else
+	{
+		e.classList.remove('muteOn');
+		audio.play();
 	}
 }
