@@ -1,3 +1,5 @@
+const _DAY=0, _NOON=1, _NIGHT=2;
+
 function vmin(p)
 {
   return Math.min(window.innerWidth,window.innerHeight) * p / 100;
@@ -61,7 +63,7 @@ function timeDetect()
 {
 	let today = new Date();   
 	let hours = today.getHours();
-	if(between(hours,10,14)) return "noon";
-	else if(between(hours,0,6) || between(hours,21,24)) return "night";
-	else return "day";
+	if(between(hours,10,14)) return _NOON;
+	else if(between(hours,0,6) || between(hours,21,24)) return _NIGHT;
+	else return _DAY;
 }
