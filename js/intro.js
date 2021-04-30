@@ -1,5 +1,3 @@
-let v;
-
 let Showcase_Button=function(d)
 {
 	let teapot=null;
@@ -17,7 +15,6 @@ let Showcase_Button=function(d)
 		d.createCanvas(vmin(30), vmin(20), d.WEBGL);
 		d.noStroke();
 		d.rot=0.0;
-		v=d;
 	};
 	d.draw=function()
 	{
